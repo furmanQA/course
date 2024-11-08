@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invite to the Activity Chat!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Заголовок страницы */
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        /* Основной контейнер мессенджера */
+        .messenger-container {
+            display: flex;
+            width: 100%;
+            max-width: 1000px;
+            height: 70vh;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        /* Боковая панель списка чатов */
+        .chat-list {
+            width: 35%;
+            background-color: #f7f9fc;
+            border-right: 1px solid #ddd;
+            overflow-y: auto;
+        }
+
+        /* Элементы списка чатов */
+        .chat-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background-color 0.2s;
+        }
+
+        .chat-item:hover {
+            background-color: #e6f3ff;
+        }
+
+        .chat-item.active {
+            background-color: #B5BBDB;
+        }
+
+        .chat-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #ddd;
+        }
+
+        .chat-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Контейнер чата */
+        .chat-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+        }
+
+        /* Заголовок чата */
+        .chat-header {
+            padding: 15px;
+            background-color: #0078ff;
+            color: white;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        /* Область сообщений */
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Сообщения */
+        .message {
+            max-width: 70%;
+            padding: 10px;
+            border-radius: 15px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        /* Сообщение от другого пользователя */
+        .message.other {
+            align-self: flex-start;
+            background-color: #e5e5ea;
+            color: black;
+        }
+
+        /* Сообщение от текущего пользователя */
+        .message.self {
+            align-self: flex-end;
+            background-color: #0078ff;
+            color: white;
+        }
+
+        /* Поле ввода и кнопка отправки */
+        .message-input-container {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+
+        .message-input {
+            flex: 1;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .send-button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            background-color: #0078ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .send-button:hover {
+            background-color: #0066cc;
+        }
+
+        /* Кнопки внизу страницы */
+        .footer-buttons {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .footer-buttons button {
+            padding: 10px 20px;
+            font-size: 14px;
+            background-color: #0078ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .footer-buttons button:hover {
+            background-color: #0066cc;
+        }
+		.send-button:disabled {
+			background-color: #b0b0b0;
+			cursor: not-allowed;
+			color: #666666;
+		}
+		.message-input:disabled {
+			background-color: #b0b0b0;
+			cursor: not-allowed;
+			color: #666666;
+        }
+        .icon-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .gray, .yellow, .blue, .red {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .gray { background-color: gray; }
+        .yellow { background-color: yellow; }
+        .blue { background-color: blue; color: #fff; }
+		.red { background-color: red; color: #fff; }
+        .gray:hover, .yellow:hover, .blue:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Заголовок страницы -->
+<div class="title">Invite to the Activity Chat!</div>
+
+<!-- Основной контейнер мессенджера -->
+<div class="messenger-container">
+    <!-- Боковая панель для выбора чатов -->
+		<div class="chat-list">
+				<div class="chat-item" onclick="loadChat('Eva Stown (HR Manager)', evaMessages, this)">
+			<div class="chat-avatar"><img src="/Course/lessons/lesson2/images/hravatar.jpg" alt="Eva Stown (HR Manager)"></div>
+			<div>Eva Stown (HR Manager)</div>
+		</div>
+			<div class="chat-item" onclick="loadChat('Chris Shepard (Head of QA)', chrisMessages)">
+			<div class="chat-avatar"><img src="/Course/lessons/lesson2/images/headofqaavatar.jpg" alt="Chris Shepard (Head of QA)"></div>
+			<div>Chris Shepard (Head of QA)</div>
+		</div>
+		<div class="chat-item" onclick="loadChat('Brenda Oconn (Office Manager)', brendaMessages, this)">
+			<div class="chat-avatar"><img src="/Course/lessons/lesson2/images/officemanageravatar.jpg" alt="Brenda Oconn (Office Manager)"></div>
+			<div>Brenda Oconn (Office Manager)</div>
+		</div>
+
+    </div>
+
+    <!-- Основной контейнер чата -->
+    <div class="chat-container">
+        <div class="chat-header" id="chatHeader">Chat with Eva Stown (HR Manager)</div>
+        <div class="chat-messages" id="chatMessages">
+            <!-- Сообщения будут загружаться динамически -->
+        </div>
+
+        <!-- Поле ввода сообщения и кнопка отправки -->
+        <div class="message-input-container">
+            <input type="text" id="messageInput" disabled class="message-input" placeholder="Type a message...">
+            <button class="send-button" disabled onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+</div>
+
+<!-- Нижние кнопки "Back" и "Next"-->
+
+<div class="footer-buttons">
+    <button onclick="window.location.href='/course/lessons/lesson3/lesson3-15-1.html'">Back</button>
+	<!--<button onclick="window.location.href='lesson3-4.html'">Next</button> -->
+</div>
+	<div class="icon-container"> 
+		<a href="/Course/lessons/lesson3/helps/lesson3-16-info.html" class="red" title="Information">i</a>
+		<a href="/Course/lessons/lesson3/helps/lesson3-16-slides.html" class="gray" title="Слайды">S</a>
+        <a href="/Course/lessons/lesson3/helps/lesson3-16-description.html" class="gray" title="Сценарий">T</a>
+		<a href="/Course/lessons/lesson3/lesson3-17.html" class="blue" title="Next">></a>
+    </div>
+<script>
+    // Сообщения для каждого чата
+    const evaMessages = [
+        { text: "Hello! How are you?", type: "other" },
+		{ text: "Hi", type: "self" },
+		{ text: "Сейчас отправлю тебе правила, полилитику компании и договор. почитай и напиши мне когда закончишь", type: "other" },
+		{ text: "Done", type: "self" },
+		{ text: "Сейчас кину инвайт на офисный чат в дискорде", type: "other" },
+		{ text: "https://discord.gg/AJVMSttq напиши туда 'test'", type: "other" },
+		{ text: "Сейчас кину инвайт на чат с активностями в Teams", type: "other" },
+		{ text: "https://teams.microsoft.com/v2/?tenantId=d1c1adfdf48-baa8-48e2-966c-e99d65f86f95 напиши туда 'test Teams'", type: "other" }
+    ];
+
+    const brendaMessages = [
+        { text: "Hey there!", type: "other" }
+        //{ text: "Long time no see!", type: "self" }
+    ];
+
+    const chrisMessages = [
+        { text: "Holla", type: "other" }
+       // { text: "Yes, let's meet at the usual place.", type: "self" }
+    ];
+
+    let currentChatMessages = evaMessages;
+
+    // Функция для загрузки сообщений выбранного чата
+    function loadChat(name, messages, chatItem) {
+        document.getElementById("chatHeader").innerText = `Chat with ${name}`;
+        currentChatMessages = messages;
+        renderMessages();
+        document.querySelectorAll(".chat-item").forEach(item => item.classList.remove("active"));
+        if (chatItem) {
+            chatItem.classList.add("active");
+        }
+    }
+
+    // Функция для отображения сообщений
+    function renderMessages() {
+        const chatMessagesContainer = document.getElementById("chatMessages");
+        chatMessagesContainer.innerHTML = "";
+        currentChatMessages.forEach(message => {
+            const messageDiv = document.createElement("div");
+            messageDiv.classList.add("message", message.type);
+            messageDiv.innerText = message.text;
+            chatMessagesContainer.appendChild(messageDiv);
+        });
+    }
+
+    // Функция для отправки сообщения
+    function sendMessage() {
+        const messageInput = document.getElementById("messageInput");
+        const messageText = messageInput.value.trim();
+        if (messageText) {
+            currentChatMessages.push({ text: messageText, type: "self" });
+            renderMessages();
+            messageInput.value = "";
+            document.getElementById("chatMessages").scrollTop = document.getElementById("chatMessages").scrollHeight;
+        }
+    }
+
+    // Инициализация чата при загрузке страницы
+    window.onload = function() {
+        const evaChatItem = document.querySelector('.chat-item:nth-child(1)'); // Первый элемент в списке
+        loadChat('Eva Stown (HR Manager)', evaMessages, evaChatItem);
+    }
+</script>
+
+
+</body>
+</html>

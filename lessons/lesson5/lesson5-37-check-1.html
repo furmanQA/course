@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест по Test Case Execution 2 of 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            padding: 20px;
+            color: #333;
+        }
+        .test {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+        .question {
+            font-weight: bold;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+        .options li {
+            margin-bottom: 10px;
+        }
+        .check-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .check-button:hover {
+            background-color: #0056b3;
+        }
+        .feedback {
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: orange;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .nav-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #6c757d;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav-button-1 {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: blue;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav-button:hover {
+            background-color: #5a6268;
+        }
+        .icon-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .gray, .yellow, .blue {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .gray { background-color: gray; }
+        .yellow { background-color: yellow; }
+        .blue { background-color: blue; color: blue; }
+        .gray:hover, .yellow:hover, .blue:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="title">Тест по Test Case Execution 2 of 2</div>
+
+<div class="test" id="test8">
+    <div class="question">Если тест-кейс не может быть выполнен из-за отсутствия необходимых данных или недоступности функции, какой статус ему следует присвоить?</div>
+    <ul class="options">
+        <li><input type="radio" name="q8" value="A"> Failed</li>
+        <li><input type="radio" name="q8" value="B"> Not Executed</li>
+        <li><input type="radio" name="q8" value="C"> Blocked</li>
+        <li><input type="radio" name="q8" value="D"> Passed</li>
+    </ul>
+    <div class="feedback" id="feedback8"></div>
+</div>
+
+<div class="test" id="test9">
+    <div class="question">Что следует сделать, если тест-кейс проходит частично, но не полностью?</div>
+    <ul class="options">
+        <li><input type="radio" name="q9" value="A"> Отметить его как Passed</li>
+        <li><input type="radio" name="q9" value="B"> Поставить статус Failed и описать детали проблемы</li>
+        <li><input type="radio" name="q9" value="C"> Удалить тест-кейс из набора</li>
+		<li><input type="radio" name="q9" value="D"> Пропустить его и отметить как Not Executed</li>
+    </ul>
+    <div class="feedback" id="feedback9"></div>
+</div>
+
+<div class="test" id="test10">
+    <div class="question">Кто обычно отвечает за то, чтобы тест-кейсы выполнялись на правильных environments и с правильными конфигурациями?</div>
+    <ul class="options">
+        <li><input type="radio" name="q10" value="A"> Разработчики</li>
+        <li><input type="radio" name="q10" value="B"> QA инженеры или тестировщики</li>
+        <li><input type="radio" name="q10" value="C"> Project Manager</li>
+        <li><input type="radio" name="q10" value="D"> Пользователи</li>
+    </ul>
+    <div class="feedback" id="feedback10"></div>
+</div>
+
+<div class="nav-buttons">
+    <a href="lesson5-37-check.html" class="nav-button">Back</a>
+    <a class="nav-button" id="nextButton">Check</a>
+
+<div id="nextLevelButton" class="nav-button-1" style="display: none;">Next</div>
+</div>
+<div class="icon-container"> 
+	<a href="/Course/lessons/lesson5/helps/lesson5-37-1-slides.html" class="gray" title="Слайды">S</a>
+    <a href="/Course/lessons/lesson5/helps/lesson5-37-1-description.html" class="gray" title="Материалы">M</a>
+</div>
+
+<script>
+    document.getElementById('nextButton').addEventListener('click', function() {
+        let allCorrect = true; // Переменная для проверки всех ответов
+
+        // Проверка ответов
+        const checks = [
+            { question: 'q8', correctAnswers: ['C'], feedbackId: 'feedback8', explanation: 'Если тест-кейс не может быть выполнен из-за отсутствия необходимых данных или недоступности функции ему следует присвоить стату Blocked' },
+            { question: 'q9', correctAnswers: ['B'], feedbackId: 'feedback9', explanation: 'Если тест-кейс проходит частично ему следует присвоить стату Failed и описать детали проблемы' },
+            { question: 'q10', correctAnswers: ['B'], feedbackId: 'feedback10', explanation: 'За то чтобы тест-кейсы выполнялись на правильных environments и с правильными конфигурациями отвечают QA инженеры или тестировщики' }
+        ];
+
+        checks.forEach(({ question, correctAnswers, feedbackId, explanation }) => {
+            const options = document.getElementsByName(question);
+            const selectedAnswers = [];
+            
+            for (const option of options) {
+                if (option.checked) {
+                    selectedAnswers.push(option.value);
+                }
+            }
+            
+            const feedback = document.getElementById(feedbackId);
+            const isCorrect = correctAnswers.every(answer => selectedAnswers.includes(answer)) &&
+                              selectedAnswers.length === correctAnswers.length;
+            
+            if (isCorrect) {
+                feedback.innerHTML = "Отлично!";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.innerHTML = `Неправильно. ${explanation}`;
+                feedback.className = "feedback incorrect";
+                allCorrect = false; // Если хотя бы один ответ неправильный
+            }
+        });
+
+        // Управление кнопкой "Дальше"
+        const nextLevelButton = document.getElementById('nextLevelButton');
+        if (allCorrect) {
+            nextLevelButton.style.display = 'block'; // Показываем кнопку "Дальше"
+            nextLevelButton.onclick = () => window.location.href = 'lesson5-38-credential.html'; // Укажите, куда вести
+        } else {
+            nextLevelButton.style.display = 'none'; // Скрываем кнопку "Дальше"
+        }
+    });
+</script>
+
+</body>
+</html>

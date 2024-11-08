@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практический курс Junior QA: Тестирование веб-приложений</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f6f9;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .accordion {
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .accordion-item {
+            border-top: 1px solid #ddd;
+        }
+        .accordion-title {
+            padding: 15px;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #e8f1fa;
+            transition: background-color 0.3s;
+        }
+        .accordion-title:hover {
+            background-color: #d3e7f9;
+        }
+        .accordion-content {
+            padding: 15px;
+            display: none;
+            background-color: #ffffff;
+            border-top: 1px solid #ddd;
+        }
+		.button-container {
+			text-align: center;
+			margin-top: 20px; /* Опционально, для отступа сверху */
+		}
+		.start-button {
+			display: inline-block;
+			padding: 12px 24px;
+			font-size: 18px;
+			color: #fff;
+			background-color: #3498db;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			text-align: center;
+			text-decoration: none;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+			transition: background-color 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		.start-button:hover {
+			background-color: #2980b9;
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+		}
+        .video-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-title.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+        .icon-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .gray, .yellow, .blue {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .gray { background-color: #bdc3c7; }
+        .yellow { background-color: #f1c40f; }
+        .blue { background-color: #3498db; color: #fff; }
+        .gray:hover, .yellow:hover, .blue:hover {
+            transform: scale(1.1);
+        }
+    </style>
+    <script>
+        function toggleAccordion(event) {
+            const title = event.currentTarget;
+            const content = title.nextElementSibling;
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            title.classList.toggle('active');
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Практический курс Junior QA: Тестирование веб-приложений</h1>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/BLR7cQuG-IU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    <div class="course-intro">
+  <h3>Курс начинается с момента, когда вам поступают предложения о работе. Вы принимаете одно из них и начинаете работу в компании, получая реальные задачи и взаимодействуя с коллегами и командой.</h3>
+  <p>Все обучение строится на практических задачах из реальной жизни. Сначала вы будете получать базовые знания по каждой теме и простые задания, которые помогут закрепить материал. Затем мы постепенно будем углубляться в детали, разбирать нюансы и осваивать новые возможности в инструментах. Вы будете становиться всё более уверенным в своих силах тестировщиком.</p>
+</div>
+
+<div class="course-content">
+  <h3>Обычно курсы по тестированию дают знания о самом тестировании: учат создавать баг-репорты, писать тест-кейсы, готовят к собеседованию.</h3>
+  <p>Но на практике, после окончания курса, вы не начнёте сразу тестировать, и даже после успешного собеседования не начнёте сразу писать тест-кейсы. Чтобы это произошло, вам нужно будет взаимодействовать с людьми в компании, в которую вы устроились.</p>
+   <h2>Работа QA невозможна без взаимодействия с командой проекта.</h2>
+</div>
+
+<div class="course-realistic">
+  <h2>Мы постарались максимально приблизить обучение к реальным условиям разработки в компании, погружая вас в атмосферу работы над настоящим проектом.</h2>
+  <p>Это важная часть, которую не предлагают стандартные курсы по тестированию. Безусловно, мы ориентированы на реальный результат: по завершении курса вы получите все необходимые навыки для старта в карьере Junior QA-специалиста. Вы не просто научитесь создавать тест-кейсы в TestRail, но и сможете изменять и удалять их по мере развития проекта. Вы не просто будете создавать баг-репорты в Jira, но и проверять, действительно ли ошибки исправлены. Будете проводить тестирование с использованием инструментов DevTools и Postman на специально разработанном сайте-тренажёре, созданном для этого курса. Научитесь писать запросы к базе данных, освоите основы HTML, CSS и JavaScript. Вы не только узнаете, но и попробуете на практике всё, что вам предстоит делать, устроившись на работу в качестве Junior QA! Мы будем работать по скраму, чтобы вы освоили процесс разработки и почувствовали ритм командной работы. Вас ждут регулярные митинги: дейли, груминг, ретро — вы поймёте их суть и научитесь эффективно участвовать в каждом из них.</p>
+</div>
+
+<div class="course-goal">
+  <h3>Основная цель бесплатной части курса — выяснить, подходит ли вам такой формат обучения. Задача - Теория - Практика</h3>
+  <p>Мы сможем пообщаться с вами после прохождения бесплатной части курса! Вы поделитесь впечатлениями, а мы ответим на все интересующие вас вопросы!</p>
+</div>
+        
+        <h2>Бесплатная часть курса</h2>
+        <div class="button-container">
+			<a href="map-1.html" class="start-button">Начать обучение!</a>
+		</div>
+<div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-title" onclick="toggleAccordion(event)">
+                    Урок 1: Выбор Job Offer
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    Цель — научить тебя анализировать и выбирать подходящие предложения о работе. Ты получишь несколько писем с различными предложениями, которые нужно проанализировать, задать уточняющие вопросы и выбрать наиболее подходящее.
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-title" onclick="toggleAccordion(event)">
+                    Урок 2: Знакомство с компанией
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    Включает темы: знакомство с сотрудниками, правила компании, типы компаний.
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-title" onclick="toggleAccordion(event)">
+                    Урок 3: Мессенджеры
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    Ты установишь мессенджеры, которые используются в компании (Discord, Teams, Slack).
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-title" onclick="toggleAccordion(event)">
+                    Урок 4: Основы тестирования
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    Познакомишься с ментором и проектом, подпишешь NDA, изучишь основы тестирования и работы с TestRail, а также UI-элементы.
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-title" onclick="toggleAccordion(event)">
+                    Урок 5: Начало тестирования
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    Познакомишься с кроссплатформенным и кроссбраузерным тестированием, test-suite и различными окружениями (dev, qa, stg, prod), выполнишь первые тест-кейсы. 
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-title" onclick="toggleAccordion(event)">
+                    Урок 6: Созвон с ментором
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    Завершающий урок, в котором ты сможешь созвониться с ментором, обсудить результаты и предложение продолжить обучение на платной части курса.
+                </div>
+            </div>
+        </div>
+
+
+        
+        <h2>Платная часть курса</h2>
+<div class="course-goal">
+  <p>Мы будем проводить групповые созвоны, вы будете получать новые задания, изучать теоретическую часть и практиковать выполнение поставленных задач."</p>
+</div>
+<div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-title" onclick="toggleAccordion(event)">
+                    Урок 7: Знакомство с командой
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                     Сделаешь удобное рабочее пространство, начнешь знакомиться с командой проекта и поймешь, в чем заключается отличие Junior от Senior как в тестировании, так и в разработке. Узнаешь, кто и как управляет разработкой и тестированием проекта.
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-title" onclick="toggleAccordion(event)">
+                    Урок 8: Методологии
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    Узнаешь, какие существуют методологии разработки проектов, что такое Agile и Scrum, а также какие артефакты и церемонии существуют в Scrum.
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-title" onclick="toggleAccordion(event)">
+                    Урок 9: Daily митинг и Jira
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    Поучаствуешь в Daily miting, узнаешь что такое Jira. Поймешь разницу между Bug и Error. Проверишь первую багу.
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-title" onclick="toggleAccordion(event)">
+                    Урок 10: Grooming митинг
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    Поучаствуешь в Grooming miting, потестируешь новые тест кейсы с новыми UI элементами и узнаешь про типы тест-кейсов.
+                </div>
+            </div>
+        </div>
+	</div>
+    <div class="icon-container"> 
+        <a href="/Course/helps/landing-slides.html" class="gray" title="Слайды">S</a>
+        <a href="/Course/helps/landing-description.html" class="blue" title="Сценарий">T</a>
+    </div>
+</body>
+</html>

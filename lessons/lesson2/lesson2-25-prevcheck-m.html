@@ -144,14 +144,14 @@
 </div>
 
 <div class="nav-buttons">
-    <a href="lesson2-24-prevcheck-s.html" class="nav-button">Back</a>
+    <a href="/course/lessons/lesson2/lesson2-24-prevcheck-s.html" class="nav-button">Back</a>
     <a class="nav-button" id="nextButton">Check</a>
 
 <div id="nextLevelButton" class="nav-button-1" style="display: none;">Next</div>
 </div>
     <div class="icon-container"> 
-		<a href="/Course/lessons/lesson2/helps/lesson2-24-1-slides.html" class="gray" title="Слайды">S</a>
-        <a href="/Course/lessons/lesson2/helps/lesson2-24-1-description.html" class="blue" title="Mатериалы">M</a>
+		<a href="/course/lessons/lesson2/helps/lesson2-24-1-slides.html" class="gray" title="Слайды">S</a>
+        <a href="/course/lessons/lesson2/helps/lesson2-24-1-description.html" class="blue" title="Mатериалы">M</a>
     </div>
 
 <script>
@@ -192,7 +192,7 @@ document.getElementById('nextButton').addEventListener('click', function() {
         const nextLevelButton = document.getElementById('nextLevelButton');
         if (allCorrect) {
             nextLevelButton.style.display = 'block'; // Показываем кнопку "Дальше"
-            nextLevelButton.onclick = () => window.location.href = 'lesson2-26.html'; // Укажите, куда вести
+            nextLevelButton.onclick = () => window.location.href = '/course/lessons/lesson2/lesson2-26.html'; // Укажите, куда вести
         } else {
             nextLevelButton.style.display = 'none'; // Скрываем кнопку "Дальше"
         }

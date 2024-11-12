@@ -12,7 +12,7 @@
             margin: 0;
             padding: 0;
         }
-		.title {
+        .title {
             text-align: center;
             padding: 20px;
             font-size: 24px;
@@ -116,139 +116,98 @@
             background-color: #ffffff;
             border-top: 1px solid #ddd;
         }
-    </style>
-	    <script>
-        function toggleAccordion(event) {
-            const title = event.currentTarget;
-            const content = title.nextElementSibling;
-            content.style.display = content.style.display === 'block' ? 'none' : 'block';
-            title.classList.toggle('active');
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover; /* Обеспечивает заполнение контейнера изображением */
         }
-    </script>
+       .modal {
+            display: none; 
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Затемнение фона */
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            position: relative;
+            max-width: 80%;  /* Ширина изображения 80% от экрана */
+            max-height: 80%; /* Высота изображения 80% от экрана */
+            overflow: hidden;
+        }
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 25px;
+            color: #333;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <div class="title">Job Offer</div>
-        <div class="container">
-        <!-- Встроенный YouTube модуль -->
+    <div class="container">
+        <h1>Job Offer</h1>
         <iframe class="video" src="https://www.youtube.com/embed/weXImfrTmuc" frameborder="0" allowfullscreen></iframe>
+        <!-- Кнопка для открытия pop-up -->
 
-        <!-- Кнопки "Back" и "Start" -->
         <div class="button-container">
             <a href="lesson1-02.html" class="button back-button">Back</a>
-            <a href="lesson1-2.html" class="button">Next</a>
+            <a href="javascript:void(0)" class="button" id="summaryBtn">Summary</a>
+            <a href="lesson1-4.html" class="button">Next</a>
         </div>
-    </div>
-	<div class="icon-container"> 
-		<a href="https://docs.google.com/presentation/d/1zH2BtrX9ERB-bMSiFEyjvJWPWxH0OTlXwgM2vqfUuTM/edit?usp=sharing" class="blue" title="Слайды">S</a>
-        <a href="/course/lessons/lesson1/helps/lesson1-1-scenario.html" class="gray" title="Сценарий">T</a>
-    </div>
-<div class="accordion">
-    <div class="accordion-item">
-        <div class="accordion-title" onclick="toggleAccordion(event)">
-            Slide 1: Вступление
-            <i class="fas fa-chevron-down accordion-icon"></i>
+
+        <!-- Модальное окно -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeBtn">&times;</span>
+                <img src="/course/lessons/lesson1/images/summary1.jpg" alt="Summary Image">
+            </div>
         </div>
-        <div class="accordion-content">
-            <b>Текст на слайде:</b> "Что такое Job Offer и как на него реагировать?"<br>
-            <b>Речь:</b> "В этом видео мы разберемся, что такое Job Offer, какие важные моменты он должен включать и как правильно реагировать на предложения о работе."
+
+        <div class="icon-container"> 
+            <a href="https://docs.google.com/presentation/d/1zH2BtrX9ERB-bMSiFEyjvJWPWxH0OTlXwgM2vqfUuTM/edit?usp=sharing" class="blue" title="Слайды">S</a>
+            <a href="/course/lessons/lesson1/helps/lesson1-1-scenario.html" class="gray" title="Сценарий">T</a>
         </div>
     </div>
 
-    <div class="accordion-item">
-        <div class="accordion-title" onclick="toggleAccordion(event)">
-            Slide 2: Что такое Job Offer?
-            <i class="fas fa-chevron-down accordion-icon"></i>
-        </div>
-        <div class="accordion-content">
-            <b>Текст на слайде:</b> "Job Offer — это официальное предложение о работе"<br>
-            <b>Речь:</b> "Job Offer — это официальное предложение от компании, которое включает все условия трудоустройства. Оно важно, потому что дает тебе четкое представление о том, что тебя ждет на новой должности. Важно внимательно ознакомиться с каждым пунктом."
-        </div>
-    </div>
+    <script>
+        // Дожидаемся полной загрузки страницы перед выполнением скрипта
+        document.addEventListener("DOMContentLoaded", function() {
+            // Получаем элементы
+            var modal = document.getElementById("myModal");
+            var btn = document.getElementById("summaryBtn");
+            var span = document.getElementById("closeBtn");
 
-    <div class="accordion-item">
-        <div class="accordion-title" onclick="toggleAccordion(event)">
-            Слайд 3: Что должно быть в Job Offer?
-            <i class="fas fa-chevron-down accordion-icon"></i>
-        </div>
-        <div class="accordion-content">
-            <b>Текст на слайде:</b><br>
-            Должность и обязанности<br> 
-            Условия работы: рабочие часы, график, местоположение<br>
-            Зарплата и бонусы<br> 
-            Испытательный срок<br> 
-            Дата начала работы<br>
-            <b>Речь:</b> "Job Offer должно включать несколько ключевых элементов: 
-            <br>Должность и описание обязанностей, чтобы ты понимал, что от тебя ожидает компания, 
-            <br>Условия работы, включая рабочие часы, график и местоположение, 
-            <br>Зарплата и возможные бонусы, которые помогут тебе оценить, насколько предложенные условия тебе подходят,
-            <br>Испытательный срок, если он предусмотрен, и 
-            <br>Дата начала работы, чтобы планировать свой переход на новую должность."
-        </div>
-    </div>
+            // Когда пользователь нажимает на кнопку, открываем модальное окно
+            btn.onclick = function() {
+                modal.style.display = "flex"; // Показываем модальное окно
+            }
 
-    <div class="accordion-item">
-        <div class="accordion-title" onclick="toggleAccordion(event)">
-            Слайд 4: Что не должно быть в Job Offer?
-            <i class="fas fa-chevron-down accordion-icon"></i>
-        </div>
-        <div class="accordion-content">
-            <b>Текст на слайде:</b> "Чего не должно быть в Job Offer?"<br> 
-            <b>Речь:</b> "Job Offer не должен включать требования к личной жизни кандидата, например, вопросы о семейном положении или личных увлечениях. Также важно, чтобы условия были реальными и достижимыми, без скрытых подводных камней."
-        </div>
-    </div>
+            // Когда пользователь нажимает на кнопку закрытия (X), скрываем модальное окно
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
 
-    <div class="accordion-item">
-        <div class="accordion-title" onclick="toggleAccordion(event)">
-            Слайд 5: Нужно ли отвечать на Job Offer email?
-            <i class="fas fa-chevron-down accordion-icon"></i>
-        </div>
-        <div class="accordion-content">
-            <b>Текст на слайде:</b> "Нужно ли отвечать на Job Offer email?"<br> 
-            <b>Речь:</b> "Да, важно отвечать на Job Offer, даже если ты решаешь не принимать предложение. Даже если предложение кажется нелепым, хорошим тоном будет вежливо ответить и отказаться, сославшись на другие предложения или указав личные причины отказа. Но если предложение кажется откровенно плохим или фальшивым, его можно проигнорировать. Вежливый ответ, где ты благодаришь компанию и объясняешь свой выбор, всегда оставляет хорошее впечатление и демонстрирует твою профессиональность."
-            <ul>
-                <li>Можно согласиться на предложение.</li>
-                <li>Можно попросить пару дней на раздумья.</li>
-                <li>Можно уточнить какие-то детали.</li>
-                <li>Можно вежливо отказаться.</li>
-                <li>Можно проигнорировать.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="accordion-item">
-        <div class="accordion-title" onclick="toggleAccordion(event)">
-            Слайд 6: Уточнение информации?
-            <i class="fas fa-chevron-down accordion-icon"></i>
-        </div>
-        <div class="accordion-content">
-            <b>Текст на слайде:</b> "Что делать, если в Job Offer что-то непонятно?"<br> 
-            <b>Текст на слайде пояснение:</b> "Если в Job Offer есть моменты, которые тебе непонятны, не стесняйся задать вопросы работодателю — важно, чтобы все условия были ясны и устраивали тебя."<br> 
-            <b>Речь:</b> "Если в Job Offer ты видишь что-то, что не совсем понятно или вызывает сомнения, например, неясные условия или требования, не стесняйся обращаться к работодателю за разъяснениями. Это нормальная практика, и чем яснее ты будешь понимать условия, тем легче будет принять осознанное решение. Задавай вопросы, чтобы не упустить важные детали."
-        </div>
-    </div>
-
-    <div class="accordion-item">
-        <div class="accordion-title" onclick="toggleAccordion(event)">
-            Слайд 7: Дополнительные условия в Job Offer
-            <i class="fas fa-chevron-down accordion-icon"></i>
-        </div>
-        <div class="accordion-content">
-            <b>Текст на слайде:</b> "Что еще может быть в Job Offer?"<br> 
-            <b>Речь:</b> "В Job Offer могут быть указаны дополнительные условия, такие как возможность удаленной работы, медицинское страхование, льготы, бонусы, карьерные перспективы. Обязательно учитывай эти дополнительные условия при принятии решения."
-        </div>
-    </div>
-
-    <div class="accordion-item">
-        <div class="accordion-title" onclick="toggleAccordion(event)">
-            Слайд 8: Прими одно из предложений!
-            <i class="fas fa-chevron-down accordion-icon"></i>
-        </div>
-        <div class="accordion-content">
-            <b>Текст на слайде:</b> "Прими одно из предложений!"<br> 
-            <b>Речь:</b> "Теперь, когда ты знаешь, что должно быть в Job Offer, время действовать! Очень важно внимательно изучить Job Offer (или все предложения, если их несколько). И только после этого задавай вопросы и принимай решение. Будь вежлив, будь то согласие, отказ или просьба о дополнительном времени для принятия решения. Вежливость и профессионализм в ответах могут оставить положительное впечатление даже в случае отказа! Прими одно из предложений, ответь на письма и сделай первый шаг на пути к своей новой работе. Удачи!"
-        </div>
-    </div>
-</div>
-
+            // Когда пользователь кликает в любое место вне модального окна, закрываем его
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        });
+    </script>
 </body>
 </html>

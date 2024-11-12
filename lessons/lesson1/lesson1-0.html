@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Слайд начало темы</title>
+    <title>Video о теме которая обсуждаются в уроке 1</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -26,18 +26,10 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        .image-container {
-            flex: 1 1 80%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-			margin-bottom: 20px;
-        }
-        img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: cover; /* Обеспечивает заполнение контейнера изображением */
+        .video {
+            width: 100%;
+            height: 630px;
+            margin-bottom: 20px;
         }
         .button-container {
             display: flex;
@@ -93,18 +85,18 @@
     </style>
 </head>
 <body>
-    <div class="title">Слайд начало темы</div>
-<div class="container">
-    <div class="image-container">
-        <img src="/course/lessons/lesson1/images/acceptjobofferstart.jpg" alt="Description of Image">
-    </div>
-    
+    <div class="title">Video о теме которая обсуждаются в уроке 1</div>
+    <div class="container">
+        <!-- Встроенный YouTube модуль -->
+        <iframe class="video" src="https://www.youtube.com/embed/weXImfrTmuc" frameborder="0" allowfullscreen></iframe>
+
+        <!-- Кнопки "Back" и "Start" -->
         <div class="button-container">
-            <a href="lesson1.html" class="button back-button">Back</a>
-            <a href="lesson1-1.html" class="button">Next</a>
+            <a href="/course/lessons/lesson1/lesson1.html" class="button back-button">Back</a>
+            <a href="/course/lessons/lesson1/lesson1-02.html" class="button">Next</a>
         </div>
-</div>
-	    <div class="icon-container"> 
+	</div>
+	<div class="icon-container"> 
 		<a href="/course/lessons/lesson1/helps/lesson1-0-slides.html" class="gray" title="Слайды">S</a>
         <a href="/course/lessons/lesson1/helps/lesson1-0-description.html" class="gray" title="Сценарий">T</a>
     </div>

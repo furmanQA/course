@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video о том кто такой Office Manager</title>
+    <title>Office Manager</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,7 +12,7 @@
             margin: 0;
             padding: 0;
         }
-		.title {
+        .title {
             text-align: center;
             padding: 20px;
             font-size: 24px;
@@ -28,7 +28,7 @@
         }
         .video {
             width: 100%;
-            height: 630px;
+            height: 580px;
             margin-bottom: 20px;
         }
         .button-container {
@@ -82,23 +82,132 @@
         .gray:hover, .yellow:hover, .blue:hover {
             transform: scale(1.1);
         }
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .accordion {
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .accordion-item {
+            border-top: 1px solid #ddd;
+        }
+        .accordion-title {
+            padding: 15px;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #e8f1fa;
+            transition: background-color 0.3s;
+        }
+        .accordion-title:hover {
+            background-color: #d3e7f9;
+        }
+        .accordion-content {
+            padding: 15px;
+            display: none;
+            background-color: #ffffff;
+            border-top: 1px solid #ddd;
+        }
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover; /* Обеспечивает заполнение контейнера изображением */
+        }
+       .modal {
+            display: none; 
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Затемнение фона */
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            position: relative;
+            max-width: 80%;  /* Ширина изображения 80% от экрана */
+            max-height: 80%; /* Высота изображения 80% от экрана */
+            overflow: hidden;
+        }
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 25px;
+            color: #333;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <div class="title">Video о том кто такой Office Manager</div>
     <div class="container">
-        <!-- Встроенный YouTube модуль -->
+        <h1>Office Manager</h1>
         <iframe class="video" src="https://www.youtube.com/embed/weXImfrTmuc" frameborder="0" allowfullscreen></iframe>
+        <!-- Кнопка для открытия pop-up -->
 
-        <!-- Кнопки "Back" и "Start" -->
         <div class="button-container">
             <a href="/course/lessons/lesson2/lesson2-7-messenger-office.html" class="button back-button">Back</a>
+            <a href="javascript:void(0)" class="button" id="summaryBtn">Summary</a>
             <a href="/course/lessons/lesson2/lesson2-9.html" class="button">Next</a>
         </div>
-	</div>
-	<div class="icon-container"> 
-		<a href="/course/lessons/lesson2/helps/lesson2-8-slides.html" class="gray" title="Слайды">S</a>
-        <a href="/course/lessons/lesson2/helps/lesson2-8-description.html" class="gray" title="Сценарий">T</a>
+
+        <!-- Модальное окно -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeBtn">&times;</span>
+                <img src="/course/lessons/lesson2/images/summary_office.jpg" alt="Summary Image">
+            </div>
+        </div>
+
+        <div class="icon-container"> 
+            <a href="https://docs.google.com/presentation/d/1oOU_jDTsUEUZTWwtZ9oe_8EUahCs7QgbOrVgDp3xlqM/edit?usp=sharing" class="blue" title="Слайды">S</a>
+            <a href="/course/lessons/lesson2/helps/lesson2-8-scenario.html" class="gray" title="Сценарий">T</a>
+        </div>
     </div>
+
+    <script>
+        // Дожидаемся полной загрузки страницы перед выполнением скрипта
+        document.addEventListener("DOMContentLoaded", function() {
+            // Получаем элементы
+            var modal = document.getElementById("myModal");
+            var btn = document.getElementById("summaryBtn");
+            var span = document.getElementById("closeBtn");
+
+            // Когда пользователь нажимает на кнопку, открываем модальное окно
+            btn.onclick = function() {
+                modal.style.display = "flex"; // Показываем модальное окно
+            }
+
+            // Когда пользователь нажимает на кнопку закрытия (X), скрываем модальное окно
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // Когда пользователь кликает в любое место вне модального окна, закрываем его
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        });
+    </script>
 </body>
 </html>

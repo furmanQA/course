@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Client</title>
+    <title>Welcome Email</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -105,7 +105,7 @@
             flex-direction: column;
             gap: 10px;
         }
-        .gray, .yellow, .blue, .red {
+        .gray, .yellow, .blue {
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -121,7 +121,6 @@
         .gray { background-color: gray; }
         .yellow { background-color: yellow; }
         .blue { background-color: blue; color: #fff; }
-		.red { background-color: red; color: #fff; }
         .gray:hover, .yellow:hover, .blue:hover {
             transform: scale(1.1);
         }
@@ -133,20 +132,21 @@
     </div>
     <div class="container">
         <div class="email-list">
-            <div class="email-item" onclick="selectEmail('email1')"><b>Предложение работы: Jun...</b></div>
-            <div class="email-item" onclick="selectEmail('email2')"><b>Спасибо за Ваше участ...</b></div>
-            <div class="email-item" onclick="selectEmail('email3')"><b>Результаты собеседова...</b></div>
-            <div class="email-item" onclick="selectEmail('email4')"><b>Предложение работы: ...</b></div>
-            <div class="email-item" onclick="selectEmail('email5')"><b>Информация по резуль...</b></div>
-            <div class="email-item" onclick="selectEmail('email6')"><b>Благодарим за участи...</b></div>
-            <div class="email-item" onclick="selectEmail('email7')"><b>Предложение работы: ...</b></div>
+			<div class="email-item" onclick="selectEmail('email8')"><b>Добро пожаловать: ...</b></div>
+            <div class="email-item" onclick="selectEmail('email1')">Предложение работы: Jun...</div>
+            <div class="email-item" onclick="selectEmail('email2')">Спасибо за Ваше участ...</div>
+            <div class="email-item" onclick="selectEmail('email3')">Результаты собеседова...</div>
+            <div class="email-item" onclick="selectEmail('email4')">Предложение работы: ...</div>
+            <div class="email-item" onclick="selectEmail('email5')">Информация по резуль...</div>
+            <div class="email-item" onclick="selectEmail('email6')">Благодарим за участи...</div>
+            <div class="email-item" onclick="selectEmail('email7')">Предложение работы: ...</div>
         </div>
         <div class="email-content">
-            <h2>У вас 7 непрочитанных писем</h2>
+            <h2>У вас 1 непрочитанное письмо</h2>
             <div class="email-info" id="emailFrom"></div>
             <div class="email-info" id="emailDate"></div>
             <div class="email-body" id="emailBody">
-                <img src="/course/lessons/lesson1/images/emptylogo.jpg" alt="Логотип" id="emailLogo">  Логотип письма 
+                <img src="/course/lessons/lesson1/images/emptylogo.jpg" alt="Логотип" id="emailLogo"> <!-- Логотип письма -->
                 <p></p>
                 <p></p>
                 <p></p>
@@ -154,18 +154,30 @@
         </div>
     </div>
     <div class="button-container">
-        <button class="back-button" onclick="window.location.href='/course/lessons/lesson1/lesson1-3.html'">Back</button>
-        <!--<button class="next-button" onclick="window.location.href='lesson1-5-welcomeemail.html'">Next</button>-->
+        <button class="back-button" onclick="window.location.href='/course/lessons/lesson1/lesson1-4-email-client.html'">Back</button>
+        <!--<button class="next-button" onclick="window.location.href='lesson1-6.html'">Next</button> -->
     </div>
-	<div class="icon-container">
-		<a href="/course/lessons/lesson1/helps/lesson1-4-info.html" class="red" title="Information">i</a>
-		<a href="/course/lessons/lesson1/helps/lesson1-4-slides.html" class="gray" title="Слайды">S</a>
-        <a href="/course/lessons/lesson1/helps/lesson1-4-description.html" class="gray" title="Сценарий">T</a>
-		<a href="/course/lessons/lesson1/lesson1-5-welcome-email.html" class="blue" title="Сценарий">></a>
+	<div class="icon-container"> 
+		<a href="/course/lessons/lesson1/helps/lesson1-5-slides.html" class="gray" title="Слайды">S</a>
+        <a href="/course/lessons/lesson1/helps/lesson1-5-description.html" class="gray" title="Сценарий">T</a>
     </div>
     <script>
         const emailData = {
-            email1: {
+            email8: {
+                subject: "Добро пожаловать",
+                from: "eva@jcppehere.com",
+                date: getRandomDate(0),
+                body: `
+                    <img src="/course/lessons/lesson1/images/logo4.jpg" alt="Логотип">
+					<p>{username},</p>
+					<p><strong>Добро пожаловать в команду JCPPE Here</strong></p>
+					<p>Мы рады, что вы приняли наше предложение и с нетерпением ждем вашего присоединения к нам на позиции Junior Quality Assurance. Ваша роль является важной частью нашей команды, и мы уверены, что ваши знания и навыки помогут нам достичь новых высот.</p>
+					<p>Вы можете начать работу в любое удобное для вас время. Просто перейдите по ссылке ниже!</p>
+					 <p><a href="lesson1-6.html">Начать работу!</a></p>
+					<p>С уважением,<br>Eva<br>HR Manager<br>JCPPE Here</p>
+                `
+            },
+			email1: {
                 subject: "Предложение работы: Junior QA в Wesds",
                 from: "yulia@wesds.com",
                 date: getRandomDate(0),
@@ -313,8 +325,8 @@
             });
             document.querySelector(`.email-item[onclick*="${emailId}"]`).classList.add('selected');
         }
-						window.onload = function() {
-        selectEmail('email1'); // Указываем ID письма, которое нужно открыть при загрузке страницы
+				window.onload = function() {
+        selectEmail('email8'); // Указываем ID письма, которое нужно открыть при загрузке страницы
     };
     </script>
 </body>

@@ -125,6 +125,58 @@
         .gray:hover, .yellow:hover, .blue:hover {
             transform: scale(1.1);
         }
+		/* Стили для всплывающего окна */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none; /* Скрыто по умолчанию */
+            justify-content: center;
+            align-items: center;
+        }
+        .popup {
+            width: 80%;
+            height: 80%;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow-y: auto;
+        }
+        .popup-header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        .popup input, .popup textarea {
+            width: 95%;
+            margin-bottom: 10px;
+            padding: 8px;
+            font-size: 16px;
+        }
+        .popup .send-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .popup .send-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -133,13 +185,13 @@
     </div>
     <div class="container">
         <div class="email-list">
-            <div class="email-item" onclick="selectEmail('email1')"><b>Предложение работы: Jun...</b></div>
-            <div class="email-item" onclick="selectEmail('email2')"><b>Спасибо за Ваше участ...</b></div>
-            <div class="email-item" onclick="selectEmail('email3')"><b>Результаты собеседова...</b></div>
-            <div class="email-item" onclick="selectEmail('email4')"><b>Предложение работы: ...</b></div>
-            <div class="email-item" onclick="selectEmail('email5')"><b>Информация по резуль...</b></div>
-            <div class="email-item" onclick="selectEmail('email6')"><b>Благодарим за участи...</b></div>
-            <div class="email-item" onclick="selectEmail('email7')"><b>Предложение работы: ...</b></div>
+            <div class="email-item" onclick="selectEmail2('email1')"><b>Предложение работы: Jun...</b></div>
+            <div class="email-item" onclick="selectEmail2('email2')"><b>Спасибо за Ваше участ...</b></div>
+            <div class="email-item" onclick="selectEmail2('email3')"><b>Результаты собеседова...</b></div>
+            <div class="email-item" onclick="selectEmail2('email4')"><b>Предложение работы: ...</b></div>
+            <div class="email-item" onclick="selectEmail2('email5')"><b>Информация по резуль...</b></div>
+            <div class="email-item" onclick="selectEmail2('email6')"><b>Благодарим за участи...</b></div>
+            <div class="email-item" onclick="selectEmail2('email7')"><b>Предложение работы: ...</b></div>
         </div>
         <div class="email-content">
             <h2>У вас 7 непрочитанных писем</h2>
@@ -153,6 +205,21 @@
             </div>
         </div>
     </div>
+		<div class="popup-overlay" id="popupOverlay">
+			<div class="popup">
+				<span class="popup-close" onclick="closePopup()">×</span>
+				<div class="popup-header">Reply to Offer</div>
+				<form id="replyForm">
+					<label>To:</label><br>
+					<input type="text" id="toField" readonly><br>
+					<label>Subject:</label><br>
+					<input type="text" id="subjectField"><br>
+					<label>Body:</label><br>
+					<textarea id="bodyField" rows="10"></textarea><br>
+					<button type="button" class="send-button" onclick="sendReply()">Send</button>
+				</form>
+			</div>
+		</div>
     <div class="button-container">
         <button class="back-button" onclick="window.location.href='/course/lessons/lesson1/lesson1-3.html'">Back</button>
         <!--<button class="next-button" onclick="window.location.href='lesson1-5-welcomeemail.html'">Next</button>-->
@@ -162,31 +229,34 @@
 		<a href="/course/lessons/lesson1/helps/lesson1-4-slides.html" class="gray" title="Слайды">S</a>
         <a href="/course/lessons/lesson1/helps/lesson1-4-description.html" class="gray" title="Сценарий">T</a>
 		<a href="/course/lessons/lesson1/lesson1-5-welcome-email.html" class="blue" title="Сценарий">></a>
-    </div>
-    <script>
+    </div> <!-- или -->
+<script>
         const emailData = {
             email1: {
                 subject: "Предложение работы: Junior QA в Wesds",
                 from: "yulia@wesds.com",
                 date: getRandomDate(0),
                 body: `
-					<img src="/course/lessons/lesson1/images/logo1.jpg" alt="Логотип">
-					<p>{username},</p>
-					<p>Мы рады сообщить вам, что вы успешно прошли все этапы нашего отбора, и мы хотели бы предложить вам позицию <b>Junior Quality Assurance</b> в нашей команде в Wesds!</p>
-					<p><h3>Условия работы:</h3>
-						<ul>
-							<li><strong>Должность:</strong> Junior QA</li>
-							<li><strong>Заработная плата:</strong> 400 $ в месяц <em>(на время испытательного срока)</em></li>
-							<li><strong>Условия работы:</strong> Полная занятость (40 часов в неделю), работа в любом из офисов компании (Вильнюс, Варшава, Тбилиси) или удаленная работа.</li>
-							<li><strong>Бенефиты:</strong> Медицинская страховка, 15 рабочих дней отпуска в год.</li>
-							<li><strong>Дата начала работы:</strong> <strong>=={currentDate+7days}==</strong></li>
-							<li><strong>Испытательный срок:</strong> 3 месяца</li>
-							<li><strong>Заработная плата после испытательного срока:</strong> 600 $ в месяц</li>
-							<li><strong>Обязанности:</strong> тестирование программного обеспечения</li>
-						</ul></p>
-					<p>Мы с нетерпением ждем возможности работать с вами и уверены, что вы внесете значительный вклад в успех нашей компании!</p>
-					<p>С уважением,<br>Yulia<br>HR Manager<br>Wesds</p>
-					`
+    <img src="/course/lessons/lesson1/images/logo1.jpg" alt="Логотип">
+    <p>{username},</p>
+    <p>Мы рады сообщить вам, что вы успешно прошли все этапы нашего отбора, и мы хотели бы предложить вам позицию <b>Junior Quality Assurance</b> в нашей команде в Wesds!</p>
+    <p><h3>Условия работы:</h3>
+        <ul>
+            <li><strong>Должность:</strong> Junior QA</li>
+            <li><strong>Заработная плата:</strong> 400 $ в месяц <em>(на время испытательного срока)</em></li>
+            <li><strong>Условия работы:</strong> Полная занятость (40 часов в неделю), работа в любом из офисов компании (Вильнюс, Варшава, Тбилиси) или удаленная работа.</li>
+            <li><strong>Бенефиты:</strong> Медицинская страховка, 15 рабочих дней отпуска в год.</li>
+            <li><strong>Дата начала работы:</strong> <strong>=={currentDate+7days}==</strong></li>
+            <li><strong>Испытательный срок:</strong> 3 месяца</li>
+            <li><strong>Заработная плата после испытательного срока:</strong> 600 $ в месяц</li>
+            <li><strong>Обязанности:</strong> тестирование программного обеспечения</li>
+        </ul></p>
+    <p>Мы с нетерпением ждем возможности работать с вами и уверены, что вы внесете значительный вклад в успех нашей компании!</p>
+    <p>С уважением,<br>Yulia<br>HR Manager<br>Wesds</p>
+		<div style="text-align: center; margin-top: 20px;">
+			<button id="replyButton" style="padding: 8px 16px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="openPopup()">Reply</button>
+		</div>
+			`
 			},
 			email2: {
 				subject: "Спасибо за Ваше участие в процессе отбора на позицию Junior QA",
@@ -200,6 +270,9 @@
 					<p>Тем не менее, мы были рады познакомиться с Вами и ценим Ваш вклад в процесс отбора. Мы будем рады остаться с Вами на связи и предлагаем подписаться на нашу страницу LinkedIn и канал вакансий, чтобы быть в курсе открытых позиций в будущем.</p>
 					<p>Желаем успехов в Вашем профессиональном развитии и достижения поставленных целей! Спасибо, что выбрали нас как место возможной работы.</p>
 					<p>С уважением,<br>Sarah<br>HR Manager<br>AMPCU</p>
+		<div style="text-align: center; margin-top: 20px;">
+			<button id="replyButton" style="padding: 8px 16px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="openPopup()">Reply</button>
+		</div>
                 `
             },
             email3: {
@@ -212,6 +285,9 @@
 					<p>Благодарим за время и усилия, вложенные в процесс отбора на позицию Junior QA. После рассмотрения всех кандидатов мы приняли решение двигаться дальше с другим претендентом.</p>
 					<p>Желаем успехов в дальнейших начинаниях и надеемся, что скоро вы найдете идеальную для себя возможность!</p>
 					<p>С уважением,<br>George<br>Region G</p>
+		<div style="text-align: center; margin-top: 20px;">
+			<button id="replyButton" style="padding: 8px 16px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="openPopup()">Reply</button>
+		</div>
                 `
             },
             email4: {
@@ -234,6 +310,9 @@
 					<p>Если вы согласны с предложением, пожалуйста подтвердите свое намерение принять его, ответив на это письмо до  **=={currentDate+2days}==**. После этого мы предоставим вам все необходимые документы для оформления.</p>
 					<p>С нетерпением ждем возможности работать вместе с вами!</p>
 					<p>С уважением,<br>Eva<br>HR Manager<br>JCPPE Here</p>
+		<div style="text-align: center; margin-top: 20px;">
+			<button id="replyButton" style="padding: 8px 16px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="openPopup()">Reply</button>
+		</div>
                 `
             },
             email5: {
@@ -246,6 +325,9 @@
 					<p>Сообщаем вам, что процесс отбора на позицию Junior QA завершён. По итогам рассмотрения заявок и собеседований мы приняли решение не предлагать вам данную роль.</p>
 					<p>Благодарим за проявленный интерес к компании GEHT и желаем успехов в поиске подходящих профессиональных возможностей.</p>
 					<p>С уважением,<br>Vlad<br>HR Manager<br>GEHT</p>
+		<div style="text-align: center; margin-top: 20px;">
+			<button id="replyButton" style="padding: 8px 16px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="openPopup()">Reply</button>
+		</div>
                 `
             },
             email6: {
@@ -259,6 +341,9 @@
 					<p>Мы внимательно рассмотрели вашу кандидатуру, и по результатам собеседования приняли решение не продолжать сотрудничество в рамках данной позиции.</p>
 					<p>Благодарим за внимание и участие.</p>
 					<p>etna</p>
+		<div style="text-align: center; margin-top: 20px;">
+			<button id="replyButton" style="padding: 8px 16px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="openPopup()">Reply</button>
+		</div>
                 `
             },
             email7: {
@@ -285,37 +370,72 @@
 					<p>Еще раз поздравляю с успешным присоединением к нашей семье и с нетерпением жду начала нашего совместного сотрудничества!</p>
 					<p>До встречи в офисе!</p>
 					<p>С уважением,<br>Patrick<br>Директор <br>Cool&Co</p>
+		<div style="text-align: center; margin-top: 20px;">
+			<button id="replyButton" style="padding: 8px 16px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="openPopup()">Reply</button>
+		</div>
                 `
             }
         };
+		window.onload = function() {
+        selectEmail('email1'); // Указываем ID письма, которое нужно открыть при загрузке страницы
+		selectEmail1('email1'); // Указываем ID письма, которое нужно открыть при загрузке страницы
+		};
 		
 		function getRandomDate(daysAgo) {
             const date = new Date();
             date.setDate(date.getDate() - daysAgo);
             return date.toISOString().split('T')[0]; // Формат YYYY-MM-DD
         }
-
-        function selectEmail(emailId) {
-            // Обновляем заголовок письма
+		function selectEmail2(emailId) {
+            selectEmail1(emailId);
+			selectEmail(emailId);
+        }
+        function selectEmail1(emailId) {
+            const email = emailData[emailId];
+            document.getElementById('emailFrom').innerText = 'От: ' + email.from;
+            document.getElementById('emailDate').innerText = 'Дата: ' + email.date;
+            document.getElementById('emailBody').innerHTML = email.body;
+            document.getElementById('toField').value = email.from;
+            document.getElementById('subjectField').value = 'Re: ' + email.subject;
+        }
+		function selectEmail(emailId) {
             document.querySelector('.email-content h2').innerText = emailData[emailId].subject;
-
-            // Обновляем информацию о письме
             document.getElementById('emailFrom').innerText = `От: ${emailData[emailId].from}`;
             document.getElementById('emailDate').innerText = `Дата: ${emailData[emailId].date}`;
-            
-            // Обновляем тело письма
-            document.getElementById('emailBody').innerHTML = emailData[emailId].body;
-
-            // Сброс выделения других писем
+			document.getElementById('emailBody').innerHTML = emailData[emailId].body;
             const emailItems = document.querySelectorAll('.email-item');
             emailItems.forEach(item => {
                 item.classList.remove('selected');
             });
             document.querySelector(`.email-item[onclick*="${emailId}"]`).classList.add('selected');
         }
-						window.onload = function() {
-        selectEmail('email1'); // Указываем ID письма, которое нужно открыть при загрузке страницы
-    };
+
+        function openPopup() {
+            document.getElementById('popupOverlay').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('popupOverlay').style.display = 'none';
+        }
+
+        function sendReply() {
+            closePopup();
+        }
+		
+		// Открыть всплывающее окно
+        document.getElementById('replyButton').onclick = function() {
+            document.getElementById('popupOverlay').style.display = 'flex';
+        }
+		function openReplyPopup(to, subject, body) {
+			// Заполняем поля формы значениями
+			document.getElementById("toField").value = to;
+			document.getElementById("subjectField").value = subject;
+			document.getElementById("bodyField").value = body;
+
+			// Показываем попап
+			document.getElementById("popupOverlay").style.display = "block";
+		}
+
     </script>
 </body>
 </html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шахматная доска</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .chessboard-container {
+            position: relative;
+        }
+        .chessboard {
+            display: grid;
+            grid-template-columns: repeat(8, 80px); /* Увеличили размер клеток */
+            grid-template-rows: repeat(8, 80px);
+            border: 2px solid #333;
+            position: relative;
+        }
+        .chessboard div {
+            width: 80px; /* Увеличили размер клетки */
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px; /* Увеличили размер текста фигуры */
+            user-select: none;
+            cursor: pointer;
+            position: relative;
+        }
+        .white {
+            background-color: #eee;
+        }
+        .black {
+            background-color: #333;
+            color: #fff;
+        }
+        .highlight {
+            box-shadow: inset 0 0 0 3px yellow;
+        }
+        .labels {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+        }
+        .row-labels {
+            position: absolute;
+            left: -40px;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .col-labels {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            display: flex;
+        }
+        .row-labels div, .col-labels div {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #555;
+        }
+        .figure {
+            font-size: 60px; /* Увеличили размер фигуры */
+            cursor: grab;
+            user-select: none;
+        }
+        .figures-container {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .trash-icon {
+            font-size: 40px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            z-index: 20;
+        }
+    </style>
+</head>
+<body>
+
+<div class="figures-container">
+    <div class="figure" draggable="true" id="black-king" data-color="black">♚</div>
+    <div class="figure" draggable="true" id="white-king" data-color="white">♔</div>
+    <div class="figure" draggable="true" id="black-queen" data-color="black">♛</div>
+    <div class="figure" draggable="true" id="white-queen" data-color="white">♕</div>
+    <div class="figure" draggable="true" id="black-rook" data-color="black">♜</div>
+    <div class="figure" draggable="true" id="white-rook" data-color="white">♖</div>
+    <div class="figure" draggable="true" id="black-bishop" data-color="black">♝</div>
+    <div class="figure" draggable="true" id="white-bishop" data-color="white">♗</div>
+    <div class="figure" draggable="true" id="black-knight" data-color="black">♞</div>
+    <div class="figure" draggable="true" id="white-knight" data-color="white">♘</div>
+    <div class="figure" draggable="true" id="black-pawn" data-color="black">♟</div>
+    <div class="figure" draggable="true" id="white-pawn" data-color="white">♙</div>
+</div>
+
+<div class="chessboard-container">
+    <div class="labels row-labels">
+        <div>8</div>
+        <div>7</div>
+        <div>6</div>
+        <div>5</div>
+        <div>4</div>
+        <div>3</div>
+        <div>2</div>
+        <div>1</div>
+    </div>
+    <div class="labels col-labels">
+        <div>a</div>
+        <div>b</div>
+        <div>c</div>
+        <div>d</div>
+        <div>e</div>
+        <div>f</div>
+        <div>g</div>
+        <div>h</div>
+    </div>
+    <div class="chessboard" id="chessboard"></div>
+</div>
+
+<script>
+    const chessboard = document.getElementById('chessboard');
+    let draggedPiece = null;
+
+    // Создание доски
+    for (let row = 0; row < 8; row++) {
+        for (let col = 0; col < 8; col++) {
+            const cell = document.createElement('div');
+            cell.classList.add((row + col) % 2 === 0 ? 'white' : 'black');
+            cell.dataset.position = String.fromCharCode(97 + col) + (8 - row);
+            cell.addEventListener('dragover', dragOver);
+            cell.addEventListener('drop', drop);
+            cell.addEventListener('contextmenu', (e) => e.preventDefault()); // Отключение контекстного меню
+            chessboard.appendChild(cell);
+        }
+    }
+
+    // Разрешаем сбрасывать фигуру в клетку
+    function dragOver(e) {
+        e.preventDefault();
+    }
+
+    // Начало перетаскивания
+    document.querySelectorAll('.figure').forEach(figure => {
+        figure.addEventListener('dragstart', (e) => {
+            draggedPiece = e.target;
+        });
+    });
+
+    // Размещение фигуры на доске
+    function drop(e) {
+        e.preventDefault();
+        const cell = e.target;
+        if (cell && !cell.hasChildNodes() && draggedPiece) {
+            cell.textContent = draggedPiece.textContent;
+            cell.style.fontSize = '60px'; // Размер фигуры
+            cell.style.color = draggedPiece.dataset.color; // Цвет фигуры
+            draggedPiece = null;
+        }
+    }
+
+    // Перетаскивание фигуры по доске
+    chessboard.addEventListener('dragover', dragOver);
+    chessboard.addEventListener('drop', (e) => {
+        if (draggedPiece) {
+            e.preventDefault();
+            const cell = e.target;
+            if (cell.classList.contains('black') || cell.classList.contains('white')) {
+                cell.textContent = draggedPiece.textContent;
+                cell.style.color = draggedPiece.dataset.color; // Устанавливаем цвет фигуры при перемещении
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
 	<link rel="icon" href="/course/images/favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Sumamry по 2-му уроку</title>
+    <title>Outro Lesson 2</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -29,7 +29,7 @@
         }
         .video {
             width: 100%;
-            height: 630px;
+            height: 580px;
             margin-bottom: 20px;
         }
         .button-container {
@@ -83,10 +83,83 @@
         .gray:hover, .yellow:hover, .blue:hover {
             transform: scale(1.1);
         }
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .accordion {
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .accordion-item {
+            border-top: 1px solid #ddd;
+        }
+        .accordion-title {
+            padding: 15px;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #e8f1fa;
+            transition: background-color 0.3s;
+        }
+        .accordion-title:hover {
+            background-color: #d3e7f9;
+        }
+        .accordion-content {
+            padding: 15px;
+            display: none;
+            background-color: #ffffff;
+            border-top: 1px solid #ddd;
+        }
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover; /* Обеспечивает заполнение контейнера изображением */
+        }
+       .modal {
+            display: none; 
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Затемнение фона */
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            position: relative;
+            max-width: 80%;  /* Ширина изображения 80% от экрана */
+            max-height: 80%; /* Высота изображения 80% от экрана */
+            overflow: hidden;
+        }
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 25px;
+            color: #333;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <div class="title">Video Sumamry по 2-му уроку</div>
+    <div class="title">Outro Lesson 2</div>
     <div class="container">
         <!-- Встроенный YouTube модуль -->
         <iframe class="video" src="https://www.youtube.com/embed/weXImfrTmuc" frameborder="0" allowfullscreen></iframe>
@@ -94,15 +167,17 @@
         <!-- Кнопки "Back" и "Next" -->
         <div class="button-container">
             <a href="/course/lessons/lesson2/lesson2-31.html" class="button back-button">Back</a>
+			<a href="/course/lessons/lesson2/lesson2-32-summary-slides.html" class="button">Summary</a>
             <a href="/course/lessons/lesson2/lesson2-33.html" class="button">Next</a>
         </div>
-    </div>
+
 
     <!-- Контейнер для иконок -->
     <div class="icon-container">
 		<a href="/course/map-7.html" class="yellow" title="Map">M</a>
 		<a href="/course/lessons/lesson2/helps/lesson2-32-slides.html" class="gray" title="Слайды">S</a>
         <a href="/course/lessons/lesson2/helps/lesson2-32-scenario.html" class="gray" title="Сценарий">T</a>
+    </div>
     </div>
 </body>
 </html>

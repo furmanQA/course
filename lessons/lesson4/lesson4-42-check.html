@@ -112,7 +112,7 @@
 		}
 		.gray { background-color: gray; }
 		.yellow { background-color: yellow; }
-		.blue { background-color: blue; color: blue; }
+		.blue { background-color: blue; color: #fff; }
 		.gray:hover, .yellow:hover, .blue:hover {
 			transform: scale(1.1);
 		}
@@ -160,12 +160,13 @@
 	<a class="nav-button" id="nextButton">Check</a>
 
 <div id="nextLevelButton" class="nav-button-1" style="display: none;">Next</div>
-</div>
+
 <div class="icon-container"> 
 	<a href="/course/lessons/lesson4/helps/lesson4-42-slides.html" class="gray" title="Слайды">S</a>
 	<a href="/course/lessons/lesson4/helps/lesson4-42-scenario.html" class="gray" title="Материалы">M</a>
+	<a href="/course/lessons/lesson4/lesson4-43.html" class="blue" title="Skip">></a>
 </div>
-
+</div>
 <script>
 	document.getElementById('nextButton').addEventListener('click', function() {
 		let allCorrect = true; // Переменная для проверки всех ответов

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
+	<meta charset="UTF-8">
 	<link rel="icon" href="/course/images/favicon.ico" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lesson 3: Comlpete</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 3: Comlpete</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -64,7 +64,6 @@
         .back-button:hover {
             background-color: #5a6268;
         }
-     <!-- Стили для иконок -->
         .icon-container {
             position: fixed;
             bottom: 20px;
@@ -73,10 +72,9 @@
             flex-direction: column;
             gap: 10px;
         }
-		.gray {
+        .gray, .yellow, .blue {
             width: 40px;
             height: 40px;
-            background-color: gray;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -87,61 +85,30 @@
             font-weight: bold;
             transition: transform 0.3s;
         }
-        .gray:hover {
-            transform: scale(1.1);
-        }
-        .yellow {
-            width: 40px;
-            height: 40px;
-            background-color: yellow;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: #333;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s;
-        }
-        .yellow:hover {
-            transform: scale(1.1);
-        }
-		.blue {
-            width: 40px;
-            height: 40px;
-            background-color: blue;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s;
-        }
-        .blue:hover {
+        .gray { background-color: gray; }
+        .yellow { background-color: yellow; }
+        .blue { background-color: blue; color: #fff; }
+        .gray:hover, .yellow:hover, .blue:hover {
             transform: scale(1.1);
         }
     </style>
 </head>
 <body>
-    <div class="title">Lesson 3: Comlpete</div>
+	<div class="title">Lesson 3: Comlpete</div>
 <div class="container">
-    <div class="image-container">
-        <img src="/course/lessons/lesson3/images/seeyou.jpg" alt="Description of Image">
-    </div>
-    
-        <div class="button-container">
-            <a href="/course/lessons/lesson3/lesson3-24.html" class="button back-button">Back</a> 
-            <a href="/course/map-4.html" class="button">Next</a>
-        </div>
+	<div class="image-container">
+		<img src="/course/lessons/lesson3/images/seeyou.jpg" alt="Description of Image">
+	</div>
+	
+		<div class="button-container">
+			<a href="/course/lessons/lesson3/lesson3-24.html" class="button back-button">Back</a> 
+			<a href="/course/map-4.html" class="button">Next</a>
+		</div>
 </div>
-    <div class="icon-container">
+	<div class="icon-container">
 		<a href="/course/map-7.html" class="yellow" title="Map">M</a>
 		<a href="/course/lessons/lesson3/helps/lesson3-25-slides.html" class="gray" title="Слайды">S</a>
-        <a href="/course/lessons/lesson3/helps/lesson3-25-scenario.html" class="gray" title="Сценарий">T</a>
-    </div>
+		<a href="/course/lessons/lesson3/helps/lesson3-25-scenario.html" class="gray" title="Сценарий">T</a>
+	</div>
 </body>
 </html>

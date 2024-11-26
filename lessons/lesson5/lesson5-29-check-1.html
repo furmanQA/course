@@ -1,214 +1,217 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Environments (Dev, QA, Stg, Prod) Test 2 of 2</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 20px;
-        }
-        .title {
-            font-size: 24px;
-            font-weight: bold;
-            padding: 20px;
-            color: #333;
-        }
-        .test {
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-align: left;
-        }
-        .question {
-            font-weight: bold;
-        }
-        .options {
-            list-style-type: none;
-            padding: 0;
-        }
-        .options li {
-            margin-bottom: 10px;
-        }
-        .check-button {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin-top: 10px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .check-button:hover {
-            background-color: #0056b3;
-        }
-        .feedback {
-            margin-top: 10px;
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .correct {
-            color: green;
-        }
-        .incorrect {
-            color: orange;
-        }
-        .nav-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .nav-button {
-            padding: 10px 20px;
-            font-size: 18px;
-            color: #fff;
-            background-color: #6c757d;
-            text-decoration: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .nav-button-1 {
-            padding: 10px 20px;
-            font-size: 18px;
-            color: #fff;
-            background-color: blue;
-            text-decoration: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .nav-button:hover {
-            background-color: #5a6268;
-        }
-        .icon-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .gray, .yellow, .blue {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: #333;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s;
-        }
-        .gray { background-color: gray; }
-        .yellow { background-color: yellow; }
-        .blue { background-color: blue; color: blue; }
-        .gray:hover, .yellow:hover, .blue:hover {
-            transform: scale(1.1);
-        }
-    </style>
+	<meta charset="UTF-8">
+	<link rel="icon" href="/course/images/favicon.ico" type="image/x-icon">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Environments (Dev, QA, Stg, Prod) Test 2 of 2</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			text-align: center;
+			background-color: #f9f9f9;
+			margin: 0;
+			padding: 20px;
+		}
+		.title {
+			font-size: 24px;
+			font-weight: bold;
+			padding: 20px;
+			color: #333;
+		}
+		.test {
+			max-width: 800px;
+			margin: 20px auto;
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+			text-align: left;
+		}
+		.question {
+			font-weight: bold;
+		}
+		.options {
+			list-style-type: none;
+			padding: 0;
+		}
+		.options li {
+			margin-bottom: 10px;
+		}
+		.check-button {
+			padding: 10px 20px;
+			font-size: 16px;
+			margin-top: 10px;
+			background-color: #007bff;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.check-button:hover {
+			background-color: #0056b3;
+		}
+		.feedback {
+			margin-top: 10px;
+			font-size: 16px;
+			font-weight: bold;
+		}
+		.correct {
+			color: green;
+		}
+		.incorrect {
+			color: orange;
+		}
+		.nav-buttons {
+			display: flex;
+			justify-content: center;
+			gap: 10px;
+			margin-top: 20px;
+		}
+		.nav-button {
+			padding: 10px 20px;
+			font-size: 18px;
+			color: #fff;
+			background-color: #6c757d;
+			text-decoration: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.nav-button-1 {
+			padding: 10px 20px;
+			font-size: 18px;
+			color: #fff;
+			background-color: blue;
+			text-decoration: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.nav-button:hover {
+			background-color: #5a6268;
+		}
+		.icon-container {
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+		.gray, .yellow, .blue {
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 18px;
+			color: #333;
+			text-decoration: none;
+			font-weight: bold;
+			transition: transform 0.3s;
+		}
+		.gray { background-color: gray; }
+		.yellow { background-color: yellow; }
+		.blue { background-color: blue; color: blue; }
+		.gray:hover, .yellow:hover, .blue:hover {
+			transform: scale(1.1);
+		}
+	</style>
 </head>
 <body>
 
 <div class="title">Environments (Dev, QA, Stg, Prod) Test 2 of 2</div>
 
 <div class="test" id="test8">
-    <div class="question">В какой последовательности обычно проходят проверку новые фичи по environments?</div>
-    <ul class="options">
-        <li><input type="radio" name="q8" value="A"> Production → Staging → QA</li>
-        <li><input type="radio" name="q8" value="B"> QA → Staging → Production</li>
-        <li><input type="radio" name="q8" value="C"> Staging → Production → QA</li>
-        <li><input type="radio" name="q8" value="D"> QA → Production → Staging</li>
-    </ul>
-    <div class="feedback" id="feedback8"></div>
+	<div class="question">В какой последовательности обычно проходят проверку новые фичи по environments?</div>
+	<ul class="options">
+		<li><input type="radio" name="q8" value="A"> Production → Staging → QA</li>
+		<li><input type="radio" name="q8" value="B"> QA → Staging → Production</li>
+		<li><input type="radio" name="q8" value="C"> Staging → Production → QA</li>
+		<li><input type="radio" name="q8" value="D"> QA → Production → Staging</li>
+	</ul>
+	<div class="feedback" id="feedback8"></div>
 </div>
 
 <div class="test" id="test9">
-    <div class="question">Что происходит в QA environment?</div>
-    <ul class="options">
-        <li><input type="radio" name="q9" value="A"> Только автоматическое тестирование</li>
-        <li><input type="radio" name="q9" value="B"> Ручное и автоматическое тестирование для выявления ошибок и проблем</li>
-        <li><input type="radio" name="q9" value="C"> Функциональные обновления пользователей</li>
+	<div class="question">Что происходит в QA environment?</div>
+	<ul class="options">
+		<li><input type="radio" name="q9" value="A"> Только автоматическое тестирование</li>
+		<li><input type="radio" name="q9" value="B"> Ручное и автоматическое тестирование для выявления ошибок и проблем</li>
+		<li><input type="radio" name="q9" value="C"> Функциональные обновления пользователей</li>
 		<li><input type="radio" name="q9" value="D"> Выпуск финальной версии продукта</li>
-    </ul>
-    <div class="feedback" id="feedback9"></div>
+	</ul>
+	<div class="feedback" id="feedback9"></div>
 </div>
 
 <div class="test" id="test10">
-    <div class="question">На каком environment чаще всего запускаются тест-кейсы перед релизом в Production?</div>
-    <ul class="options">
-        <li><input type="radio" name="q10" value="A"> QA</li>
-        <li><input type="radio" name="q10" value="B"> Production</li>
-        <li><input type="radio" name="q10" value="C"> Staging</li>
-        <li><input type="radio" name="q10" value="D"> Development</li>
-    </ul>
-    <div class="feedback" id="feedback10"></div>
+	<div class="question">На каком environment чаще всего запускаются тест-кейсы перед релизом в Production?</div>
+	<ul class="options">
+		<li><input type="radio" name="q10" value="A"> QA</li>
+		<li><input type="radio" name="q10" value="B"> Production</li>
+		<li><input type="radio" name="q10" value="C"> Staging</li>
+		<li><input type="radio" name="q10" value="D"> Development</li>
+	</ul>
+	<div class="feedback" id="feedback10"></div>
 </div>
 
 <div class="nav-buttons">
-    <a href="/course/lessons/lesson5/lesson5-29-check.html" class="nav-button">Back</a>
-    <a class="nav-button" id="nextButton">Check</a>
+	<a href="/course/lessons/lesson5/lesson5-29-check.html" class="nav-button">Back</a>
+	<a class="nav-button" id="nextButton">Check</a>
 
 <div id="nextLevelButton" class="nav-button-1" style="display: none;">Next</div>
 </div>
-<div class="icon-container"> 
+<div class="icon-container">
+	<a href="/course/map-7.html" class="yellow" title="Map">M</a>
 	<a href="/course/lessons/lesson5/helps/lesson5-29-slides.html" class="gray" title="Слайды">S</a>
-    <a href="/course/lessons/lesson5/helps/lesson5-29-description.html" class="gray" title="Материалы">M</a>
+	<a href="/course/lessons/lesson5/helps/lesson5-29-scenario.html" class="gray" title="Материалы">M</a>
+	<a href="/course/lessons/lesson5/lesson5-30-messenger-mentor.html" class="blue" title="Skip">></a>
 </div>
 
 <script>
-    document.getElementById('nextButton').addEventListener('click', function() {
-        let allCorrect = true; // Переменная для проверки всех ответов
+	document.getElementById('nextButton').addEventListener('click', function() {
+		let allCorrect = true; // Переменная для проверки всех ответов
 
-        // Проверка ответов
-        const checks = [
-            { question: 'q8', correctAnswers: ['B'], feedbackId: 'feedback8', explanation: 'Обычно фичи или исправленные ошибки проходят проверку сначала на QA потом на Staging и потом на Production' },
-            { question: 'q9', correctAnswers: ['B'], feedbackId: 'feedback9', explanation: 'В QA environment проводится ручное и автоматическое тестирование для выявления ошибок и проблем' },
-            { question: 'q10', correctAnswers: ['C'], feedbackId: 'feedback10', explanation: 'Перед релизом в Production тесты обычно запускаются на Staging environment' }
-        ];
+		// Проверка ответов
+		const checks = [
+			{ question: 'q8', correctAnswers: ['B'], feedbackId: 'feedback8', explanation: 'Обычно фичи или исправленные ошибки проходят проверку сначала на QA потом на Staging и потом на Production' },
+			{ question: 'q9', correctAnswers: ['B'], feedbackId: 'feedback9', explanation: 'В QA environment проводится ручное и автоматическое тестирование для выявления ошибок и проблем' },
+			{ question: 'q10', correctAnswers: ['C'], feedbackId: 'feedback10', explanation: 'Перед релизом в Production тесты обычно запускаются на Staging environment' }
+		];
 
-        checks.forEach(({ question, correctAnswers, feedbackId, explanation }) => {
-            const options = document.getElementsByName(question);
-            const selectedAnswers = [];
-            
-            for (const option of options) {
-                if (option.checked) {
-                    selectedAnswers.push(option.value);
-                }
-            }
-            
-            const feedback = document.getElementById(feedbackId);
-            const isCorrect = correctAnswers.every(answer => selectedAnswers.includes(answer)) &&
-                              selectedAnswers.length === correctAnswers.length;
-            
-            if (isCorrect) {
-                feedback.innerHTML = "Отлично!";
-                feedback.className = "feedback correct";
-            } else {
-                feedback.innerHTML = `Неправильно. ${explanation}`;
-                feedback.className = "feedback incorrect";
-                allCorrect = false; // Если хотя бы один ответ неправильный
-            }
-        });
+		checks.forEach(({ question, correctAnswers, feedbackId, explanation }) => {
+			const options = document.getElementsByName(question);
+			const selectedAnswers = [];
+			
+			for (const option of options) {
+				if (option.checked) {
+					selectedAnswers.push(option.value);
+				}
+			}
+			
+			const feedback = document.getElementById(feedbackId);
+			const isCorrect = correctAnswers.every(answer => selectedAnswers.includes(answer)) &&
+							  selectedAnswers.length === correctAnswers.length;
+			
+			if (isCorrect) {
+				feedback.innerHTML = "Отлично!";
+				feedback.className = "feedback correct";
+			} else {
+				feedback.innerHTML = `Неправильно. ${explanation}`;
+				feedback.className = "feedback incorrect";
+				allCorrect = false; // Если хотя бы один ответ неправильный
+			}
+		});
 
-        // Управление кнопкой "Дальше"
-        const nextLevelButton = document.getElementById('nextLevelButton');
-        if (allCorrect) {
-            nextLevelButton.style.display = 'block'; // Показываем кнопку "Дальше"
-            nextLevelButton.onclick = () => window.location.href = '/course/lessons/lesson5/lesson5-30-messenger-mentor.html'; // Укажите, куда вести
-        } else {
-            nextLevelButton.style.display = 'none'; // Скрываем кнопку "Дальше"
-        }
-    });
+		// Управление кнопкой "Дальше"
+		const nextLevelButton = document.getElementById('nextLevelButton');
+		if (allCorrect) {
+			nextLevelButton.style.display = 'block'; // Показываем кнопку "Дальше"
+			nextLevelButton.onclick = () => window.location.href = '/course/lessons/lesson5/lesson5-30-messenger-mentor.html'; // Укажите, куда вести
+		} else {
+			nextLevelButton.style.display = 'none'; // Скрываем кнопку "Дальше"
+		}
+	});
 </script>
 
 </body>

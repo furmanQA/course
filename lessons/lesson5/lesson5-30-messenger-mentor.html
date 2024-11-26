@@ -1,185 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Answer 'ok' to the Mentor!</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+	<meta charset="UTF-8">
+	<link rel="icon" href="/course/images/favicon.ico" type="image/x-icon">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Answer 'ok' to the Mentor!</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f0f2f5;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
 
-        /* Заголовок страницы */
-        .title {
-            font-size: 24px;
-            font-weight: bold;
-            margin: 20px 0;
-            color: #333;
-        }
+		/* Заголовок страницы */
+		.title {
+			font-size: 24px;
+			font-weight: bold;
+			margin: 20px 0;
+			color: #333;
+		}
 
-        /* Основной контейнер мессенджера */
-        .messenger-container {
-            display: flex;
-            width: 100%;
-            max-width: 1000px;
-            height: 70vh;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-        }
+		/* Основной контейнер мессенджера */
+		.messenger-container {
+			display: flex;
+			width: 100%;
+			max-width: 1000px;
+			height: 70vh;
+			background-color: #fff;
+			border-radius: 10px;
+			box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+			overflow: hidden;
+		}
 
-        /* Боковая панель списка чатов */
-        .chat-list {
-            width: 35%;
-            background-color: #f7f9fc;
-            border-right: 1px solid #ddd;
-            overflow-y: auto;
-        }
+		/* Боковая панель списка чатов */
+		.chat-list {
+			width: 35%;
+			background-color: #f7f9fc;
+			border-right: 1px solid #ddd;
+			overflow-y: auto;
+		}
 
-        /* Элементы списка чатов */
-        .chat-item {
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: background-color 0.2s;
-        }
+		/* Элементы списка чатов */
+		.chat-item {
+			padding: 15px;
+			border-bottom: 1px solid #eee;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			transition: background-color 0.2s;
+		}
 
-        .chat-item:hover {
-            background-color: #e6f3ff;
-        }
+		.chat-item:hover {
+			background-color: #e6f3ff;
+		}
 
-        .chat-item.active {
-            background-color: #B5BBDB;
-        }
+		.chat-item.active {
+			background-color: #B5BBDB;
+		}
 
-        .chat-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-color: #ddd;
-        }
+		.chat-avatar {
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			overflow: hidden;
+			background-color: #ddd;
+		}
 
-        .chat-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+		.chat-avatar img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
 
-        /* Контейнер чата */
-        .chat-container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            background-color: #fff;
-        }
+		/* Контейнер чата */
+		.chat-container {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			background-color: #fff;
+		}
 
-        /* Заголовок чата */
-        .chat-header {
-            padding: 15px;
-            background-color: #0078ff;
-            color: white;
-            text-align: center;
-            font-size: 18px;
-        }
+		/* Заголовок чата */
+		.chat-header {
+			padding: 15px;
+			background-color: #0078ff;
+			color: white;
+			text-align: center;
+			font-size: 18px;
+		}
 
-        /* Область сообщений */
-        .chat-messages {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+		/* Область сообщений */
+		.chat-messages {
+			flex: 1;
+			padding: 15px;
+			overflow-y: auto;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
 
-        /* Сообщения */
-        .message {
-            max-width: 70%;
-            padding: 10px;
-            border-radius: 15px;
-            font-size: 14px;
-            line-height: 1.4;
-        }
+		/* Сообщения */
+		.message {
+			max-width: 70%;
+			padding: 10px;
+			border-radius: 15px;
+			font-size: 14px;
+			line-height: 1.4;
+		}
 
-        /* Сообщение от другого пользователя */
-        .message.other {
-            align-self: flex-start;
-            background-color: #e5e5ea;
-            color: black;
-        }
+		/* Сообщение от другого пользователя */
+		.message.other {
+			align-self: flex-start;
+			background-color: #e5e5ea;
+			color: black;
+		}
 
-        /* Сообщение от текущего пользователя */
-        .message.self {
-            align-self: flex-end;
-            background-color: #0078ff;
-            color: white;
-        }
+		/* Сообщение от текущего пользователя */
+		.message.self {
+			align-self: flex-end;
+			background-color: #0078ff;
+			color: white;
+		}
 
-        /* Поле ввода и кнопка отправки */
-        .message-input-container {
-            display: flex;
-            padding: 10px;
-            border-top: 1px solid #ddd;
-            background-color: #f9f9f9;
-        }
+		/* Поле ввода и кнопка отправки */
+		.message-input-container {
+			display: flex;
+			padding: 10px;
+			border-top: 1px solid #ddd;
+			background-color: #f9f9f9;
+		}
 
-        .message-input {
-            flex: 1;
-            padding: 10px;
-            font-size: 14px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
+		.message-input {
+			flex: 1;
+			padding: 10px;
+			font-size: 14px;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+		}
 
-        .send-button {
-            padding: 10px 20px;
-            margin-left: 10px;
-            background-color: #0078ff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+		.send-button {
+			padding: 10px 20px;
+			margin-left: 10px;
+			background-color: #0078ff;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
 
-        .send-button:hover {
-            background-color: #0066cc;
-        }
+		.send-button:hover {
+			background-color: #0066cc;
+		}
 
-        /* Кнопки внизу страницы */
-        .footer-buttons {
-            margin: 20px 0;
-            display: flex;
-            gap: 10px;
-        }
+		/* Кнопки внизу страницы */
+		.footer-buttons {
+			margin: 20px 0;
+			display: flex;
+			gap: 10px;
+		}
 
-        .footer-buttons button {
-            padding: 10px 20px;
-            font-size: 14px;
-            background-color: #0078ff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+		.footer-buttons button {
+			padding: 10px 20px;
+			font-size: 14px;
+			background-color: #0078ff;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
 
-        .footer-buttons button:hover {
-            background-color: #0066cc;
-        }
+		.footer-buttons button:hover {
+			background-color: #0066cc;
+		}
 		.send-button:disabled {
 			background-color: #b0b0b0;
 			cursor: not-allowed;
@@ -189,35 +190,35 @@
 			background-color: #b0b0b0;
 			cursor: not-allowed;
 			color: #666666;
-        }
-        .icon-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .gray, .yellow, .blue {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: #333;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s;
-        }
-        .gray { background-color: gray; }
-        .yellow { background-color: yellow; }
-        .blue { background-color: blue; color: #fff; }
-        .gray:hover, .yellow:hover, .blue:hover {
-            transform: scale(1.1);
-        }
-    </style>
+		}
+		.icon-container {
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+		.gray, .yellow, .blue {
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 18px;
+			color: #333;
+			text-decoration: none;
+			font-weight: bold;
+			transition: transform 0.3s;
+		}
+		.gray { background-color: gray; }
+		.yellow { background-color: yellow; }
+		.blue { background-color: blue; color: #fff; }
+		.gray:hover, .yellow:hover, .blue:hover {
+			transform: scale(1.1);
+		}
+	</style>
 </head>
 <body>
 
@@ -226,7 +227,7 @@
 
 <!-- Основной контейнер мессенджера -->
 <div class="messenger-container">
-    <!-- Боковая панель для выбора чатов -->
+	<!-- Боковая панель для выбора чатов -->
 		<div class="chat-list">
 			<div class="chat-item" onclick="loadChat('Sara Piastri (Your Mentor)', saraMessages, this)">
 			<div class="chat-avatar"><img src="/course/lessons/lesson4/images/mentoravatar.jpg" alt="Sara Piastri (Your Mentor)"></div>
@@ -245,41 +246,43 @@
 			<div>Brenda Oconn (Office Manager)</div>
 		</div>
 
-    </div>
+	</div>
 
-    <!-- Основной контейнер чата -->
-    <div class="chat-container">
-        <div class="chat-header" id="chatHeader">Chat with Sara Piastri (Your Mentor)</div>
-        <div class="chat-messages" id="chatMessages">
-            <!-- Сообщения будут загружаться динамически -->
-        </div>
+	<!-- Основной контейнер чата -->
+	<div class="chat-container">
+		<div class="chat-header" id="chatHeader">Chat with Sara Piastri (Your Mentor)</div>
+		<div class="chat-messages" id="chatMessages">
+			<!-- Сообщения будут загружаться динамически -->
+		</div>
 
-        <!-- Поле ввода сообщения и кнопка отправки -->
-        <div class="message-input-container">
-            <input type="text" id="messageInput" class="message-input" placeholder="Type a message...">
-            <button class="send-button" onclick="sendMessage()">Send</button>
-        </div>
-    </div>
-	    </div>
+		<!-- Поле ввода сообщения и кнопка отправки -->
+		<div class="message-input-container">
+			<input type="text" id="messageInput" class="message-input" placeholder="Type a message...">
+			<button class="send-button" onclick="sendMessage()">Send</button>
+		</div>
+	</div>
+		</div>
 
 <!-- Нижние кнопки "Back" и "Next"-->
 
 <div class="footer-buttons">
-    <button onclick="window.location.href='/course/lessons/lesson5/lesson5-29-check.html'">Back</button>
+	<button onclick="window.location.href='/course/lessons/lesson5/lesson5-29-check.html'">Back</button>
 	<button onclick="window.location.href='/course/lessons/lesson5/lesson5-31-achieve.html'" style="display: none;" id="nextButton" >Next</button> <!--  style="display: none;" -->
 </div>
-	<div class="icon-container"> 
+	<div class="icon-container">
+		<a href="/course/map-7.html" class="yellow" title="Map">M</a>
 		<a href="/course/lessons/lesson5/helps/lesson5-30-slides.html" class="gray" title="Слайды">S</a>
-        <a href="/course/lessons/lesson5/helps/lesson5-30-description.html" class="gray" title="Сценарий">T</a>
-    </div>
+		<a href="/course/lessons/lesson5/helps/lesson5-30-scenario.html" class="gray" title="Сценарий">T</a>
+		<a href="/course/lessons/lesson5/lesson5-31-achieve.html" class="blue" title="Skip">></a>
+	</div>
 <script>
-    // Сообщения для каждого чата
-	    const saraMessages = [
-        { text: "Привет! я твой ментор!)", type: "other" },
+	// Сообщения для каждого чата
+		const saraMessages = [
+		{ text: "Привет! я твой ментор!)", type: "other" },
 		{ text: "Hi", type: "self" },
 		{ text: "ты идешь ко мне на проект!", type: "other" },
 		{ text: "Cool!", type: "self" },
-        { text: "Отправил NDA на твою почту, надо подписать его что бы начать работать над проектом!", type: "other" },
+		{ text: "Отправил NDA на твою почту, надо подписать его что бы начать работать над проектом!", type: "other" },
 		{ text: "Скоро я отправлю тебе доступы, раскажу тебе о проекте, твоей роли и обязанностях.", type: "other" },
 		{ text: "Собераю для тебя тест кейсы", type: "other" },
 		{ text: "Собрал тесты в TestRail", type: "other" },
@@ -291,9 +294,9 @@
 		{ text: "Почти дособирал тебе Test Suite", type: "other" },
 		{ text: "chrome", type: "ok" },
 		{ text: "Проверять нужно будет на procuction кстати", type: "other" },
-    ];
-    const evaMessages = [
-        { text: "Hello! How are you?", type: "other" },
+	];
+	const evaMessages = [
+		{ text: "Hello! How are you?", type: "other" },
 		{ text: "Hi", type: "self" },
 		{ text: "Сейчас отправлю тебе правила, полилитику компании и договор. почитай и напиши мне когда закончишь", type: "other" },
 		{ text: "Done", type: "self" },
@@ -303,81 +306,81 @@
 		{ text: "https://teams.microsoft.com/v2/?tenantId=d1c1adfdf48-baa8-48e2-966c-e99d65f86f95 напиши туда 'test Teams'", type: "other" }, 
 		{ text: "Сейчас кину инвайт на Слак", type: "other" },
 		{ text: "https://app.slack.com/huddle/T04Q69KS2TS/C04PGNF2EKC напиши туда 'Slack'", type: "other" }
-    ];
+	];
 
-    const brendaMessages = [
-        { text: "Hey there!", type: "other" }
-        //{ text: "Long time no see!", type: "self" }
-    ];
+	const brendaMessages = [
+		{ text: "Hey there!", type: "other" }
+		//{ text: "Long time no see!", type: "self" }
+	];
 
-    const chrisMessages = [
-        { text: "Holla", type: "other" }
-       // { text: "Yes, let's meet at the usual place.", type: "self" }
-    ];
+	const chrisMessages = [
+		{ text: "Holla", type: "other" }
+	   // { text: "Yes, let's meet at the usual place.", type: "self" }
+	];
 
-    let currentChatMessages = saraMessages;
+	let currentChatMessages = saraMessages;
 
-    // Функция для загрузки сообщений выбранного чата
-    function loadChat(name, messages, chatItem) {
-        document.getElementById("chatHeader").innerText = `Chat with ${name}`;
-        currentChatMessages = messages;
-        renderMessages();
-        document.querySelectorAll(".chat-item").forEach(item => item.classList.remove("active"));
-        if (chatItem) {
-            chatItem.classList.add("active");
-        }
-    }
+	// Функция для загрузки сообщений выбранного чата
+	function loadChat(name, messages, chatItem) {
+		document.getElementById("chatHeader").innerText = `Chat with ${name}`;
+		currentChatMessages = messages;
+		renderMessages();
+		document.querySelectorAll(".chat-item").forEach(item => item.classList.remove("active"));
+		if (chatItem) {
+			chatItem.classList.add("active");
+		}
+	}
 
-    // Функция для отображения сообщений
-    function renderMessages() {
-        const chatMessagesContainer = document.getElementById("chatMessages");
-        chatMessagesContainer.innerHTML = "";
-        currentChatMessages.forEach(message => {
-            const messageDiv = document.createElement("div");
-            messageDiv.classList.add("message", message.type);
-            messageDiv.innerText = message.text;
-            chatMessagesContainer.appendChild(messageDiv);
-        });
-    }
+	// Функция для отображения сообщений
+	function renderMessages() {
+		const chatMessagesContainer = document.getElementById("chatMessages");
+		chatMessagesContainer.innerHTML = "";
+		currentChatMessages.forEach(message => {
+			const messageDiv = document.createElement("div");
+			messageDiv.classList.add("message", message.type);
+			messageDiv.innerText = message.text;
+			chatMessagesContainer.appendChild(messageDiv);
+		});
+	}
 
-    // Функция для отправки сообщения
-    function sendMessage() {
-        const messageInput = document.getElementById("messageInput");
-        const messageText = messageInput.value.trim();
-        if (messageText) {
-            currentChatMessages.push({ text: messageText, type: "self" });
-            renderMessages();
-            messageInput.value = "";
-            document.getElementById("chatMessages").scrollTop = document.getElementById("chatMessages").scrollHeight;
+	// Функция для отправки сообщения
+	function sendMessage() {
+		const messageInput = document.getElementById("messageInput");
+		const messageText = messageInput.value.trim();
+		if (messageText) {
+			currentChatMessages.push({ text: messageText, type: "self" });
+			renderMessages();
+			messageInput.value = "";
+			document.getElementById("chatMessages").scrollTop = document.getElementById("chatMessages").scrollHeight;
 			checkForCool();
-        }
-    }
+		}
+	}
 	function checkForCool() {
-        const nextButton = document.getElementById("nextButton");
-        const hasCoolMessage = currentChatMessages.some(message => message.text.toLowerCase() === "ok");
-        if (hasCoolMessage) {
-            nextButton.style.display = "inline-block";
-        }
-    }
-	
-function renderMessages() {
-    const chatMessagesContainer = document.getElementById("chatMessages");
-    chatMessagesContainer.innerHTML = "";
-    currentChatMessages.forEach(message => {
-        const messageDiv = document.createElement("div");
-        messageDiv.classList.add("message", message.type);
-        messageDiv.innerText = message.text;
-        chatMessagesContainer.appendChild(messageDiv);
-    });
-    // Автопрокрутка к последнему сообщению
-    chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+		const nextButton = document.getElementById("nextButton");
+		const hasCoolMessage = currentChatMessages.some(message => message.text.toLowerCase() === "ok");
+		if (hasCoolMessage) {
+			nextButton.style.display = "inline-block";
+		}
 	}
 	
-    // Инициализация чата при загрузке страницы
-    window.onload = function() {
-        const saraChatItem = document.querySelector('.chat-item:nth-child(1)'); // Первый элемент в списке
-        loadChat('Sara Piastri (Your Mentor)', saraMessages, saraChatItem);
-    }
+function renderMessages() {
+	const chatMessagesContainer = document.getElementById("chatMessages");
+	chatMessagesContainer.innerHTML = "";
+	currentChatMessages.forEach(message => {
+		const messageDiv = document.createElement("div");
+		messageDiv.classList.add("message", message.type);
+		messageDiv.innerText = message.text;
+		chatMessagesContainer.appendChild(messageDiv);
+	});
+	// Автопрокрутка к последнему сообщению
+	chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+	}
+	
+	// Инициализация чата при загрузке страницы
+	window.onload = function() {
+		const saraChatItem = document.querySelector('.chat-item:nth-child(1)'); // Первый элемент в списке
+		loadChat('Sara Piastri (Your Mentor)', saraMessages, saraChatItem);
+	}
 </script>
 
 

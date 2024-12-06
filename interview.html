@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Подготовка к техническому собеседованию 6 Jan 24</title>
+	<link rel="icon" href="/course/images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			color: #333;
+			background-color: #f4f6f9;
+		}
+		.container {
+			max-width: 1400px;
+			margin: 40px auto;
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 8px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+		h1, h2 {
+			color: #2c3e50;
+			text-align: center;
+		}
+		h1 {
+			font-size: 2em;
+			margin-bottom: 10px;
+		}
+		.accordion {
+			margin-top: 20px;
+			border-radius: 5px;
+		}
+		.accordion-item {
+			border-top: 1px solid #ddd;
+		}
+		.accordion-title {
+			padding: 15px;
+			font-size: 18px;
+			cursor: pointer;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			background-color: #e8f1fa;
+			transition: background-color 0.3s;
+		}
+		.accordion-title:hover {
+			background-color: #d3e7f9;
+		}
+		.accordion-content {
+			padding: 15px;
+			display: none;
+			background-color: #ffffff;
+			border-top: 1px solid #ddd;
+		}
+		.button-container {
+			text-align: center;
+			margin-top: 20px; /* Опционально, для отступа сверху */
+		}
+		.start-button {
+			display: inline-block;
+			padding: 12px 24px;
+			font-size: 18px;
+			color: #fff;
+			background-color: #3498db;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			text-align: center;
+			text-decoration: none;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+			transition: background-color 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		.start-button:hover {
+			background-color: #2980b9;
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+		}
+		.video-container {
+			text-align: center;
+			margin: 20px 0;
+		}
+		.accordion-icon {
+			transition: transform 0.3s ease;
+		}
+		.accordion-title.active .accordion-icon {
+			transform: rotate(180deg);
+		}
+		.icon-container {
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+		.gray, .yellow, .blue {
+			width: 45px;
+			height: 45px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 18px;
+			color: #333;
+			text-decoration: none;
+			font-weight: bold;
+			transition: transform 0.3s;
+		}
+		.gray { background-color: #bdc3c7; }
+		.yellow { background-color: #f1c40f; }
+		.blue { background-color: #3498db; color: #fff; }
+		.gray:hover, .yellow:hover, .blue:hover {
+			transform: scale(1.1);
+		}
+	</style>
+	<script>
+		function toggleAccordion(event) {
+			const title = event.currentTarget;
+			const content = title.nextElementSibling;
+			content.style.display = content.style.display === 'block' ? 'none' : 'block';
+			title.classList.toggle('active');
+		}
+	</script>
+</head>
+<body>
+	<div class="container">
+		<h1>Подготовка к техническому собеседованию 6 Jan 24</h1>
+	<div class="course-intro">
+		<div class="accordion">
+			<div class="accordion-item">
+				<div class="accordion-title" onclick="toggleAccordion(event)">
+					Информация обо мне
+					<i class="fas fa-chevron-down accordion-icon"></i>
+				</div>
+				<div class="accordion-content">
+					Manual QA Engineer,<br>
+					В IT с 2009 года в TulaCo c 2012-го года,<br>
+					41 год,<br>
+					до TulaCo поработал в 2-х outsource компаниях,<br>
+					Уровень Английского Pre-Intermediate,<br>
+					Был на собеседовании техническом последний раз в 2010 году.<br>
+				</div>
+			</div>
+			<div class="accordion-item">
+				<div class="accordion-title" onclick="toggleAccordion(event)">
+					Проекты и роль в проектах
+					<i class="fas fa-chevron-down accordion-icon"></i>
+				</div>
+				<div class="accordion-content">
+					The Studio System<br>
+					База данных по Фильмам, Компаниям, Людям.<br>
+					Большое количество данных в базе, при этом не очень много клиентов.<br>
+					Несколько раз переписывали проект.<br>
+					Большое количество подпроектов. Несколько CMS (Maching, Images, Data, Acess) iOS app где то штук 8 разных подпроектов.<br>
+					Проработал там в общей сложности лет 8-9 с перерывами т.к. заказчик уходил<br>
+					Большую часть времени работал на проекте 1, На пике на проекте работало около 15 человек, тогда брали 2-го QA<br>
+					В митингах не участвовал вообще.<br>
+					Вся разработка была в то время в Могилеском офисе и все работали из офиса. Так что все что было надо или непонятно решалось офлайн.<br>
+					Общался через Jira если надо было уточнить требования какие то у продект овнеров. Хотя в начале была какая то другая система для ведения проектов, я не помню что это было но точно что то плохое.<br>
+					Писали какие то тест кейсы в TestLink но это было от безделия когда не было силььно работы и заканчивалось когда работа появлялась.<br>
+					Было 3 Environment QA, STG, Prod. Делали Релиз кандадата, ложили на STG там его смотрел заказчик или не смотрел и в какой то момент я получал сообщение что мы в прод вышли пробегись по проду.<br>
+					У меня было несколько чек листов, условно там на 15 минут на 30 и на час. Проводил Smoke на проде. Отписывался что все прошло/или не прошло. После этого смотрел на новые фичи фиксы которые были залиты.<br>
+					Конечно бывало что какие то баги пролазили на прод но это было не часто. Ну по багам которые обнаружились только на проде смотрели по ситуации или хотфиксили или уже в следующую сборку фиксы шли.<br>
+					Там более менее активно использовал базу. Обычно хватало простых селектов или хранимку какую то надо было дернуть после каких то действий что б данные пересчитались.
+					Если надо было сделать какой то join шел в соседний кабинет, из за того что это надо было условно раз в пол года а не использовалось там например раз в неделю то на той неделе когда я писал или мне помогали написать запрос я пониал как он работает и.т.д а через время все забывал.<br>
+					Несколько раз делал нагрузочное тестирование в JMeter. Как оказалось сделать нагрузочный тест в JMeter не так сложно как понять результаты и понять на сколько ты на самом деле нагрузил систему.<br>
+					C CI/CD я не работал. Авто тестами я не занимался по той же причине что и тест кейсами. Приложения несколько раз переписывалось, я был там в основном 1 тестировщик и поддерживать все это дело было +- нереально в одно лицо, всех устраивало что происходит.<br>
+					тестировал iOS App. <br>
+					На TSS я работал с Димой Дикуном, с Вадимом Чуськовым, с Максимом Яковлевым, с Олегом Ганиным, с Юрой Янковским.<br><br><br>
+					
+					StyleRow<br>
+					Приложение для дизайнеров.<br>
+					Стартап с процессами.<br>
+					Проработал там около 2-х лет<br>
+					На проекте работало где то около 10 разработчиков и 5 QA<br>
+					Налаженные процессы. Посмотрел как это все выглядит.<br>
+					Четкое планирование, релизи раз в 2 недели. Полное покрытие тестами нового функционала, огромная регрессия на 2-3 дня. Смоук тест на 4 часа после релиза).<br>
+					Лид делил задачи между QA которые попали в спринт, после этого каждый писал тесты по своей функциональности. И было ревью тестов.<br>
+					После того как девелоперы заканчивали с разработкой проводилось тестирование на QA,<br>
+					Создавались баги что то уточнялось еще, какие то тесты могли меняться.<br>
+					Делался кодфриз фиксились баги и то что успешно прошло тестирование попадало как релиз кандидат на STG.<br>
+					На STG проводилась регрессия которая несколько дней занимала. Наверно мы пару тысяч тест кейсов гоняли командой за спринт.<br>
+					Ла, автотесты и все такое, но это стартап, который довольно живой и функционал и UI менялись / переделывались<br>
+					Авто тесты были но я ими не занимался. Не было времени и задачи такой.<br>
+					Работали в TestRail Написал кучу чеклистов (использовались у нас вместо тест кейсов).<br>
+					Большое внимание уделялось UI т.е. там 2-3 пикселя что то куда то уехало или больше/меньш еще ок а условно 4 уже бага. (Figma, PerfectPixel)<br>
+					Каждый день на дейлике отсматривались ВСЕ новые баги, обсуждался приоритет. Что то попадало в спринт, что то наоборот выкидывали из спринта.
+					Было правило по багам - то что относится к фичам в текущем спринте в спринт, то что не относится 50/50 зависило от загрузки и критичности бага.
+					По размаху самого приложения и по маштабам разработки оно раза в 2 было меньше чем TSS при этом тут было 4 QA.
+					
+					Twinbox<br>
+					Widget для поиска информации в подкастах. И дашборд для подкастеров.<br>
+					Это по сути класический стартап в котором скорость важнее качества.<br>
+					Для каких то новых фич, лучше мы выйдем с багой и потом её подправим (если она будет) при этом максимально быстро сможем получить фидбэк, чем будем искать багу которой нет.<br>
+					Проработал там около года и продолжаю частично работать<br>
+					Команда человек 7 я тестировал, и много чем еще занимался попутно и паралельно<br>
+					Не для всего был UI поэтому довольно плотно работал с Postman.<br>
+					Несколько раз делал нагрузочные тесты. Пользователей было не много интересовало сколько очень примерно система выдержит и какой в среднем время на ответ пользователю.
+					Т.е. Заказчики едут на конфу какую то, надо было понять сколько мы гарантированно можем пользователей одновременно держать. Когда времени совсем не было были примитивные тесты. +- одновременно через браузер 20 пользователей создавалось. Потом проводили уже нормальные тесты более менее (фронт сказал что на моей стороне проблем не будет если бэк данные отдаст)) Сделал коллекцию прописал какой то сценарий запросами, потестировали вместе с бэком. Опять таки без помощи разработчика сложно что то понять, если что то очевидное то да понятно но как правило все сложнее.
+					Увидел все процессы изнутри. (Я имею ввиду то не было ваще никакой закрытой информации от меня). Потому что до этого прилетает какая то задача с каким то приоритетом кому и зачем она нужна было понятно не до конца. <br>
+					Тестировал страйп. Тестировал GPT.<br>
+					При тестировании GPT важно во первых что каждый запрос стоит денег. А еще важно понимать что есть куча факторов влияющих на ответ. И вишенка на торте ты спрашиваешь 4 раза, один раз отвечает хорошо, 2 раза нормально, 1 раз плохо естественно это все на одной машине с одинаковыми настройками) <br>
+					Аналитикой не занимался, В основном смотрел то что происходит в LangSmith
+					Доступ к базе мне не дали, хоть я и просил с правами на чтение себе доступ к QA
+					PostgresQL у нас по моему была база, бэк часть на питоне часть еще на чем то. 
+				</div>
+			</div>
+			<div class="accordion-item">
+				<div class="accordion-title" onclick="toggleAccordion(event)">
+					Урок 9: Daily митинг и Jira
+					<i class="fas fa-chevron-down accordion-icon"></i>
+				</div>
+				<div class="accordion-content">
+					Поучаствуете в Daily miting, узнаете что такое Jira. Поймете разницу между Bug и Error. Проверите первую багу.
+				</div>
+			</div>
+			<div class="accordion-item">
+				<div class="accordion-title" onclick="toggleAccordion(event)">
+					Урок 10: Grooming митинг
+					<i class="fas fa-chevron-down accordion-icon"></i>
+				</div>
+				<div class="accordion-content">
+					Поучаствуете в Grooming miting, потестируете новые тест кейсы с новыми UI элементами и узнаете про типы тест-кейсов.
+				</div>
+			</div>
+		</div>
+		<p>Информация по проектам</p>
+	</div>
+		
+	<h2>Технические вопросы - подготовка</h2>
+	<div class="button-container">
+		<a href="/course/map-1.html" class="start-button">Начать обучение!</a>
+	</div>
+<div class="accordion">
+			<div class="accordion-item">
+				<div class="accordion-title" onclick="toggleAccordion(event)">
+					Урок 1: Выбор Job Offer
+					<i class="fas fa-chevron-down accordion-icon"></i>
+				</div>
+				<div class="accordion-content">
+					Цель — научить вас анализировать и выбирать подходящие предложения о работе. Вы получите несколько писем с различными предложениями, которые нужно проанализировать, задать уточняющие вопросы и выбрать наиболее подходящее.
+					<div class="button-container">
+						<a href="/course/lessons/lesson2/lesson2-2.html" target="_blank" class="start-button">HR Manager</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="accordion-item">
+				<div class="accordion-title" onclick="toggleAccordion(event)">
+					Урок 2: Знакомство с компанией
+					<i class="fas fa-chevron-down accordion-icon"></i>
+				</div>
+				<div class="accordion-content">
+					Цель — познакомить вас с некоторыми сотрудниками компании. Вы узнаете о правилах компании и какие типы компаний бывают.
+				</div>
+			</div>
+
+			<div class="accordion-item">
+				<div class="accordion-title" onclick="toggleAccordion(event)">
+					Урок 3: Мессенджеры
+					<i class="fas fa-chevron-down accordion-icon"></i>
+				</div>
+				<div class="accordion-content">
+					Цель — научиться пользоваться мессенджерами компании. Установить (Discord, Teams, Slack) и научиться ими пользоваться на базовом уровне.
+				</div>
+			</div>
+
+			<div class="accordion-item">
+				<div class="accordion-title" onclick="toggleAccordion(event)">
+					Урок 4: Основы тестирования
+					<i class="fas fa-chevron-down accordion-icon"></i>
+				</div>
+				<div class="accordion-content">
+					Цель — познакомиться с ментором и проектом. Так же вы подпишите NDA, изучите основы тестирования и работы с TestRail. Узнать некоторые базовые UI-элементы.
+				</div>
+			</div>
+
+			<div class="accordion-item">
+				<div class="accordion-title" onclick="toggleAccordion(event)">
+					Урок 5: Начало тестирования
+					<i class="fas fa-chevron-down accordion-icon"></i>
+				</div>
+				<div class="accordion-content">
+					Цель — познакомиться с кроссплатформенным и кроссбраузерным тестированием. Узнать что такое test-suite и тестовая среда(dev, qa, stg, prod). Выполнить первые тест-кейсы. 
+				</div>
+			</div>
+
+			<div class="accordion-item">
+				<div class="accordion-title" onclick="toggleAccordion(event)">
+					Урок 6: Созвон с ментором
+					<i class="fas fa-chevron-down accordion-icon"></i>
+				</div>
+				<div class="accordion-content">
+					Завершающий урок, в котором вы сможете созвониться с ментором, обсудите результаты. Сможете узнать в каком формате будет проходить дальнейшее обучение в платной части курса.
+				</div>
+			</div>
+		</div>
+		
+		<h2>Платная часть курса Part 1</h2>
+		<div class="course-goal">
+		  <p>Мы будем проводить групповые звонки, вы будете получать новые задания, изучать теоретическую часть и практиковать выполнение поставленных задач."</p>
+		</div>
+		<div class="accordion">
+			<div class="accordion-item">
+				<div class="accordion-title" onclick="toggleAccordion(event)">
+					Урок 7: Знакомство с командой
+					<i class="fas fa-chevron-down accordion-icon"></i>
+				</div>
+				<div class="accordion-content">
+					 Вы начнете знакомиться с командой проекта и поймете, чем отличается Junior от Senior как в тестировании, так и в разработке. Сделаете удобное рабочее пространство, узнаете, кто и как управляет разработкой и тестированием проекта.
+				</div>
+			</div>
+			<div class="accordion-item">
+				<div class="accordion-title" onclick="toggleAccordion(event)">
+					Урок 8: Методологии
+					<i class="fas fa-chevron-down accordion-icon"></i>
+				</div>
+				<div class="accordion-content">
+					Узнаете, какие существуют методологии разработки проектов, что такое Agile и Scrum, а также какие артефакты и церемонии существуют в Scrum.
+				</div>
+			</div>
+			<div class="accordion-item">
+				<div class="accordion-title" onclick="toggleAccordion(event)">
+					Урок 9: Daily митинг и Jira
+					<i class="fas fa-chevron-down accordion-icon"></i>
+				</div>
+				<div class="accordion-content">
+					Поучаствуете в Daily miting, узнаете что такое Jira. Поймете разницу между Bug и Error. Проверите первую багу.
+				</div>
+			</div>
+			<div class="accordion-item">
+				<div class="accordion-title" onclick="toggleAccordion(event)">
+					Урок 10: Grooming митинг
+					<i class="fas fa-chevron-down accordion-icon"></i>
+				</div>
+				<div class="accordion-content">
+					Поучаствуете в Grooming miting, потестируете новые тест кейсы с новыми UI элементами и узнаете про типы тест-кейсов.
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="icon-container">
+		<a href="/course/map-7.html" class="yellow" title="Map">M</a>
+		<a href="/course/helps/landing-slides.html" class="gray" title="Слайды">S</a>
+		<a href="/course/helps/landing-scenario.html" class="blue" target="_blank" title="Сценарий">T</a>
+	</div>
+</body>
+</html>
